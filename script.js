@@ -287,16 +287,31 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
   const u = 'nayan-m15';
 
   try {
+    // Check if we're in a browser environment with required elements
+    const requiredElements = ['st-repos', 'st-stars', 'st-commits', 'cg'];
+    const missingElements = requiredElements.filter(id => !document.getElementById(id));
+    
+    if (missingElements.length > 0) {
+      console.error('Missing HTML elements:', missingElements);
+      return;
+    }
+
     // ── Profile + repos ──────────────────────────────
     const [userRes, reposRes] = await Promise.all([
       fetch(`https://api.github.com/users/${u}`),
       fetch(`https://api.github.com/users/${u}/repos?per_page=100&type=owner`)
     ]);
 
+    // Log rate limit info
+    console.log('User API remaining:', userRes.headers.get('X-RateLimit-Remaining'));
+    console.log('Repos API remaining:', reposRes.headers.get('X-RateLimit-Remaining'));
+
     if (userRes.ok) {
       const user = await userRes.json();
       const reposEl = document.getElementById('st-repos');
-      if (reposEl) reposEl.textContent = user.public_repos ?? '—';
+      reposEl.textContent = user.public_repos ?? '—';
+    } else {
+      console.error('User API error:', userRes.status);
     }
 
     let repos = [];
@@ -304,11 +319,12 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
       repos = await reposRes.json();
       const stars = repos.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
       const starsEl = document.getElementById('st-stars');
-      if (starsEl) starsEl.textContent = stars;
+      starsEl.textContent = stars;
+    } else {
+      console.error('Repos API error:', reposRes.status);
     }
 
     // ── Fetch commits from each repo directly ────────
-    // Only look back 1 year
     const since = new Date();
     since.setFullYear(since.getFullYear() - 1);
     const sinceISO = since.toISOString();
@@ -316,18 +332,26 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     const commitsByDay = {};
     let totalCommits = 0;
 
-    // Fetch in parallel, max 10 repos to avoid rate limit
+    // Filter and sort repos
     const activeRepos = repos
-      .filter(r => !r.fork)
+      .filter(r => !r.fork && r.name) // Ensure repo has a name
       .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
       .slice(0, 10);
 
-    await Promise.all(activeRepos.map(async (repo) => {
+    console.log(`Fetching commits from ${activeRepos.length} repos...`);
+
+    // Use Promise.allSettled to avoid failing if one repo fails
+    const results = await Promise.allSettled(activeRepos.map(async (repo) => {
       try {
         const res = await fetch(
           `https://api.github.com/repos/${u}/${repo.name}/commits?author=${u}&per_page=100&since=${sinceISO}`
         );
-        if (!res.ok) return;
+        
+        if (!res.ok) {
+          console.warn(`Failed to fetch commits for ${repo.name}: ${res.status}`);
+          return;
+        }
+        
         const commits = await res.json();
         if (!Array.isArray(commits)) return;
 
@@ -338,16 +362,21 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
             totalCommits++;
           }
         });
-      } catch (_) {}
+        
+        console.log(`Found ${commits.length} commits in ${repo.name}`);
+      } catch (error) {
+        console.error(`Error fetching ${repo.name}:`, error);
+      }
     }));
 
     const commitsEl = document.getElementById('st-commits');
-    if (commitsEl) commitsEl.textContent = totalCommits > 0 ? `${totalCommits}+` : '—';
+    commitsEl.textContent = totalCommits > 0 ? `${totalCommits}+` : '—';
+    
+    console.log(`Total commits found: ${totalCommits}`);
 
     // ── Build contribution grid ──────────────────────
     const g = document.getElementById('cg');
-    if (!g) return;
-
+    
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -355,6 +384,7 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     startDate.setDate(startDate.getDate() - (52 * 7) - startDate.getDay());
 
     const maxCommits = Math.max(1, ...Object.values(commitsByDay));
+    console.log(`Max commits in a day: ${maxCommits}`);
 
     let html = '';
     for (let i = 0; i < 53 * 7; i++) {
@@ -381,8 +411,12 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
       html += `<div class="cc${level > 0 ? ' l' + level : ''}" title="${key}: ${count} commit${count !== 1 ? 's' : ''}" aria-hidden="true"></div>`;
     }
     g.innerHTML = html;
+    
+    console.log('Contribution grid rendered successfully');
 
-  } catch (_) {}
+  } catch (error) {
+    console.error('Fatal error:', error);
+  }
 })();
 
 // ─── Contact form ─────────────────────────────────────
