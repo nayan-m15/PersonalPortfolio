@@ -68,7 +68,7 @@
   // ─── GitHub stats ─────────────────────────────────────
   (async () => {
     try {
-      const u = 'liamdube'; // ← replace with your GitHub username
+      const u = 'nayan-m15';
       const r = await fetch(`https://api.github.com/users/${u}`);
       if(!r.ok) return;
       const d = await r.json();
