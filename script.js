@@ -31,6 +31,192 @@
     });
   });
 
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href');
+    
+    if (targetId !== '#') {
+      e.preventDefault();
+      const target = document.querySelector(targetId);
+      
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Add highlight effect
+        target.style.transition = 'background-color 0.3s ease';
+        target.style.backgroundColor = 'rgba(100, 108, 255, 0.1)';
+        setTimeout(() => {
+          target.style.backgroundColor = '';
+        }, 1000);
+      }
+    }
+  });
+});
+
+// Interactive resume download with confirmation
+const resumeBtn = document.getElementById('resumeBtn');
+if (resumeBtn) {
+  resumeBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Show confirmation dialog
+    const userConfirmed = confirm('Would you like to download the resume?');
+    
+    if (userConfirmed) {
+      // Add loading state
+      const originalText = this.innerHTML;
+      this.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Downloading...';
+      this.style.opacity = '0.7';
+      
+      // Simulate download (replace with actual resume file)
+      setTimeout(() => {
+        // Create a dummy file for demo - replace with actual resume URL
+        const link = document.createElement('a');
+        link.href = 'path/to/your/resume.pdf'; // Update with actual resume path
+        link.download = 'Nayan_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Reset button
+        this.innerHTML = originalText;
+        this.style.opacity = '';
+        
+        // Show success message
+        showToast('Resume download started!', 'success');
+      }, 500);
+    }
+  });
+}
+
+// Add hover effects and tracking for social links
+const socialLinks = document.querySelectorAll('.hero-social');
+socialLinks.forEach(link => {
+  // Add click tracking
+  link.addEventListener('click', function(e) {
+    const platform = this.getAttribute('aria-label');
+    console.log(`Opening ${platform} profile`); // Replace with analytics tracking
+    
+    // Optional: Show toast notification
+    showToast(`Opening ${platform} profile...`, 'info');
+  });
+  
+  // Add ripple effect on click
+  link.addEventListener('click', function(e) {
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple-effect');
+    ripple.style.left = `${e.clientX - this.offsetLeft}px`;
+    ripple.style.top = `${e.clientY - this.offsetTop}px`;
+    this.style.position = 'relative';
+    this.style.overflow = 'hidden';
+    this.appendChild(ripple);
+    
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+  });
+});
+
+// Toast notification system
+function showToast(message, type = 'info') {
+  // Remove existing toast
+  const existingToast = document.querySelector('.toast-notification');
+  if (existingToast) {
+    existingToast.remove();
+  }
+  
+  // Create toast element
+  const toast = document.createElement('div');
+  toast.className = `toast-notification toast-${type}`;
+  toast.textContent = message;
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  `;
+  
+  document.body.appendChild(toast);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    toast.style.animation = 'slideOut 0.3s ease';
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
+  }, 3000);
+}
+
+// Add animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+  }
+  
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+  
+  .btn, .hero-social {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .btn:active, .hero-social:active {
+    transform: scale(0.96);
+  }
+`;
+document.head.appendChild(style);
+
+
+  
+
   // ─── Scroll: progress, nav, back-to-top ───────────────
   const prog = document.getElementById('progress');
   const nav  = document.getElementById('nav');
