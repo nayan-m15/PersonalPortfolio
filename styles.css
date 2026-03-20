@@ -554,7 +554,6 @@ pre {
   justify-content: center;
 }
 
-
 /* ═══════════════════════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════════════════════ */
@@ -647,7 +646,7 @@ pre {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .hero-socials {
@@ -696,6 +695,79 @@ pre {
   font-weight: 500;
 }
 
+/* ── Floating cards ───────────────────────────────────── */
+.hero-visual {
+  pointer-events: none;
+}
+
+.visual-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-card {
+  position: absolute;
+  top: 50%;
+  min-width: 250px;
+  max-width: 300px;
+  background: var(--bg-el);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: left;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.floating-card:hover {
+  border-color: var(--border-hi);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-1 {
+  left: 5%;
+  transform: translateY(-50%);
+  animation: floatLeft 6s ease-in-out infinite;
+}
+
+.card-2 {
+  right: 5%;
+  transform: translateY(-50%);
+  animation: floatRight 6s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+.card-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  line-height: 1.6;
+}
+
+@keyframes floatLeft {
+  0%, 100% { transform: translateY(-50%); }
+  50%       { transform: translateY(calc(-50% - 14px)); }
+}
+
+@keyframes floatRight {
+  0%, 100% { transform: translateY(-50%); }
+  50%       { transform: translateY(calc(-50% + 14px)); }
+}
+
+/* Hide cards on smaller screens where they'd overlap content */
+@media (max-width: 1100px) {
+  .visual-container { display: none; }
+}
 
 /* ═══════════════════════════════════════════════════════════
    FEATURED
@@ -1627,3 +1699,5 @@ footer {
   border-color: var(--border-hi);
   transform: translateY(-2px);
 }
+
+

@@ -8,11 +8,16 @@ themeBtn.addEventListener('click', () => {
   localStorage.setItem('theme', next);
 });
 
+/*
 // ─── Show resume button after scroll ──────────────────
 const navResume = document.getElementById('nav-resume');
 window.addEventListener('scroll', () => {
   if(window.scrollY > 200) navResume.style.display = 'inline-flex';
 }, {passive:true});
+*/
+const navResume = document.getElementById('nav-resume');
+navResume.style.display = 'inline-flex';
+
 
 // ─── Mobile menu ──────────────────────────────────────
 const menuBtn = document.getElementById('menu-btn');
