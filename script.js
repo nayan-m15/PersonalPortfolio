@@ -35,6 +35,8 @@ document.querySelectorAll('.mob-close').forEach(a => {
   });
 });
 
+
+
 // ─── Smooth scrolling with highlight effect ───────────
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
