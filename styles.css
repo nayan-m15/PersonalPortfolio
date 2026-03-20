@@ -421,6 +421,26 @@ pre {
   color: var(--accent);
 }
 
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+}
+
+.nav-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  transition: border-color var(--transition);
+}
+
+.nav-avatar:hover {
+  border-color: var(--accent);
+}
+
 .nav-links {
   display: none;
   align-items: center;
@@ -1096,6 +1116,107 @@ pre {
   gap: 0.5rem;
 }
 
+/* ═══════════════════════════════════════════════════════════
+   CERTIFICATIONS
+═══════════════════════════════════════════════════════════ */
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px)  { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .cert-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.cert-card {
+  background: var(--bg-el);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.cert-card:hover {
+  border-color: var(--border-hi);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.cert-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cert-issuer-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-bd);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.cert-issuer {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.cert-desc {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.cert-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.cert-date {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-3);
+}
+
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: opacity 0.15s;
+}
+
+.cert-link:hover { opacity: 0.75; }
 
 /* ═══════════════════════════════════════════════════════════
    EXPERIENCE
