@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- ═══ META & SEO ═══ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <link rel="stylesheet" href="styles.css">
+
+  <title>Liam Dube — CS Student & Aspiring Software Engineer</title>
+  <meta name="description" content="Liam Dube is a 3rd-year Computer Science student at the University of the Witwatersrand, building full-stack apps, mobile experiences, and ML projects. Open to software engineering internships." />
+  <meta name="keywords" content="Liam Dube, software developer, computer science, Wits, portfolio, React, Python, machine learning" />
+  <meta name="author" content="Liam Dube" />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://liamdube.dev/" />
+  <meta property="og:title" content="Liam Dube — CS Student & Aspiring Software Engineer" />
+  <meta property="og:description" content="Portfolio of Liam Dube — building full-stack apps, mobile experiences, and ML projects at Wits University." />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Liam Dube — CS Student & Aspiring Software Engineer" />
+  <link rel="canonical" href="https://liamdube.dev/" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2360A5FA'/><text x='16' y='22' font-family='sans-serif' font-weight='700' font-size='18' text-anchor='middle' fill='white'>L</text></svg>" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  
+</head>
+<body>
+<script src="script.js"></script>
+<div id="progress" aria-hidden="true"></div>
+
+<!-- ═══ NAV ═══ -->
+<header>
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Liam Dube home">LD<span>.</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-btn btn-ghost" id="theme-btn" aria-label="Toggle colour scheme">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="./Liam_Dube_CV.pdf" download class="btn btn-secondary" id="nav-resume" style="display:none">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume
+        </a>
+        <button class="menu-btn btn-ghost" id="menu-btn" aria-label="Open menu" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div id="mob-menu" role="dialog" aria-label="Mobile navigation">
+    <nav class="mob-links">
+      <a href="#projects" class="mob-close">Projects</a>
+      <a href="#skills" class="mob-close">Skills</a>
+      <a href="#experience" class="mob-close">Experience</a>
+      <a href="#contact" class="mob-close">Contact</a>
+    </nav>
+    <a href="./Liam_Dube_CV.pdf" download class="btn btn-primary mob-resume">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Resume
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero" aria-labelledby="hero-name">
+    <div class="container">
+      <div class="hero-avail" aria-label="Open to internship opportunities">
+        <span class="avail-dot" aria-hidden="true"></span>
+        Available for software engineering internships
+      </div>
+      <h1 class="hero-name" id="hero-name">Liam Dube</h1>
+      <p class="hero-title">Computer Science Student &nbsp;·&nbsp; <span class="ac">Aspiring Software Engineer</span></p>
+      <p class="hero-bio">3rd-year CS student at the University of the Witwatersrand, building full-stack web apps, cross-platform mobile experiences, and machine learning pipelines. I value clean architecture, thoughtful interfaces, and code that other engineers enjoy working with.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          View Projects
+        </a>
+        <a href="./Liam_Dube_CV.pdf" download class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/liamdube" target="_blank" rel="noopener noreferrer" class="hero-social" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          github.com/liamdube
+        </a>
+        <a href="https://linkedin.com/in/liamdube" target="_blank" rel="noopener noreferrer" class="hero-social" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          linkedin.com/in/liamdube
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">3rd</div><div class="stat-lbl">Year CS Student</div></div>
+        <div><div class="stat-num">3+</div><div class="stat-lbl">Projects Shipped</div></div>
+        <div><div class="stat-num">6+</div><div class="stat-lbl">Technologies</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED PROJECT ═══ -->
+  <section id="featured" aria-label="Featured project">
+    <div class="container">
+      <p class="feat-eyebrow">Featured Project</p>
+      <article class="feat-card reveal">
+        <div>
+          <div class="feat-meta">
+            <span class="badge badge-accent">Full-Stack</span>
+            <span class="badge badge-success">Live</span>
+          </div>
+          <h2 class="feat-name">AI Study Assistant</h2>
+          <p class="feat-desc">Students at Wits struggle to convert dense lecture notes into effective study material. I built a full-stack web app that accepts PDF uploads, processes them through the OpenAI API, and returns personalised multiple-choice quizzes — reducing estimated exam prep time by 40%.</p>
+          <div class="feat-stack">
+            <span class="badge">Python</span><span class="badge">Flask</span><span class="badge">React</span><span class="badge">PostgreSQL</span><span class="badge">OpenAI API</span><span class="badge">JWT Auth</span><span class="badge">Vercel</span>
+          </div>
+          <div class="feat-links">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live Demo
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Source Code
+            </a>
+          </div>
+        </div>
+        <div class="code-win" aria-hidden="true">
+          <div class="code-bar">
+            <span class="cd cd-r"></span><span class="cd cd-y"></span><span class="cd cd-g"></span>
+            <span class="code-fn">quiz_generator.py</span>
+          </div>
+          <div class="code-body">
+            <div class="cl"><span class="ln">1</span><span><span class="kw">from</span> <span class="vr">openai</span> <span class="kw">import</span> <span class="vr">OpenAI</span></span></div>
+            <div class="cl"><span class="ln">2</span><span><span class="kw">from</span> <span class="vr">app.models</span> <span class="kw">import</span> <span class="vr">Quiz</span></span></div>
+            <div class="cl"><span class="ln">3</span><span></span></div>
+            <div class="cl"><span class="ln">4</span><span class="cm"># Generate questions from lecture text</span></div>
+            <div class="cl"><span class="ln">5</span><span><span class="kw">def</span> <span class="fn">generate_quiz</span>(<span class="vr">text</span>: <span class="vr">str</span>, <span class="vr">n</span>: <span class="vr">int</span> = <span class="nm">10</span>):</span></div>
+            <div class="cl"><span class="ln">6</span><span>&nbsp;&nbsp;<span class="vr">client</span> = <span class="fn">OpenAI</span>()</span></div>
+            <div class="cl"><span class="ln">7</span><span>&nbsp;&nbsp;<span class="vr">resp</span> = <span class="vr">client</span>.<span class="vr">chat</span>.<span class="vr">completions</span>.<span class="fn">create</span>(</span></div>
+            <div class="cl"><span class="ln">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">model</span>=<span class="str">"gpt-4o-mini"</span>,</span></div>
+            <div class="cl"><span class="ln">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">messages</span>=[{</span></div>
+            <div class="cl"><span class="ln">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"role"</span>: <span class="str">"user"</span>,</span></div>
+            <div class="cl"><span class="ln">11</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"content"</span>: <span class="fn">f</span><span class="str">"Generate {n} MCQs\n{text}"</span></span></div>
+            <div class="cl"><span class="ln">12</span><span>&nbsp;&nbsp;&nbsp;&nbsp;}]</span></div>
+            <div class="cl"><span class="ln">13</span><span>&nbsp;&nbsp;)</span></div>
+            <div class="cl"><span class="ln">14</span><span>&nbsp;&nbsp;<span class="kw">return</span> <span class="vr">Quiz</span>.<span class="fn">from_response</span>(<span class="vr">resp</span>)</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ═══ -->
+  <section id="projects" aria-labelledby="projects-h">
+    <div class="container">
+      <div>
+        <p class="section-eyebrow">Work</p>
+        <h2 class="section-title" id="projects-h">Projects</h2>
+        <p class="section-subtitle">Self-driven projects built to solve real problems, explore new technologies, and practice system design end-to-end.</p>
+      </div>
+      <div class="proj-grid">
+
+        <article class="proj-card reveal">
+          <div class="proj-head">
+            <div class="proj-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+            <div class="proj-acts">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="Live demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+            </div>
+          </div>
+          <div><p class="proj-challenge">Challenge</p><h3 class="proj-name">Campus Events App</h3></div>
+          <p class="proj-desc">Wits students had no centralised way to discover on-campus events. Built a cross-platform mobile app with real-time RSVP and Firebase push notifications. Iterated with 3 beta users, improving task completion rate by 30%.</p>
+          <div class="proj-outcome"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>30% improvement in task completion</div>
+          <div class="proj-stack"><span class="badge">React Native</span><span class="badge">TypeScript</span><span class="badge">Firebase</span><span class="badge">Expo</span></div>
+        </article>
+
+        <article class="proj-card reveal d1">
+          <div class="proj-head">
+            <div class="proj-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+            <div class="proj-acts">
+              <a href="#" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="Live demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+            </div>
+          </div>
+          <div><p class="proj-challenge">Challenge</p><h3 class="proj-name">Sentiment Analysis Dashboard</h3></div>
+          <p class="proj-desc">Needed a reproducible ML pipeline for real-time text classification. Trained a Logistic Regression classifier on 50,000 tweets and wrapped it in a Streamlit dashboard for non-technical users.</p>
+          <div class="proj-outcome"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>87% accuracy on held-out test set</div>
+          <div class="proj-stack"><span class="badge">Python</span><span class="badge">scikit-learn</span><span class="badge">Pandas</span><span class="badge">Streamlit</span><span class="badge">Matplotlib</span></div>
+        </article>
+
+        <article class="proj-card reveal d2" style="border-style:dashed">
+          <div class="proj-head">
+            <div class="proj-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          </div>
+          <div><p class="proj-challenge">In Progress</p><h3 class="proj-name">Next Project</h3></div>
+          <p class="proj-desc" style="font-style:italic">Currently working on a new project — follow my GitHub for updates on what's shipping next.</p>
+          <div class="proj-stack"><span class="badge">TBD</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ═══ -->
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="container">
+      <div>
+        <p class="section-eyebrow">Capabilities</p>
+        <h2 class="section-title" id="skills-h">Skills &amp; Technologies</h2>
+        <p class="section-subtitle">Technologies used across coursework, personal projects, and self-directed learning — organised by category, not by arbitrary proficiency scores.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="sk-group reveal">
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Languages</div>
+          <div class="sk-badges"><span class="badge">Python</span><span class="badge">JavaScript</span><span class="badge">TypeScript</span><span class="badge">Java</span><span class="badge">C++</span><span class="badge">SQL</span><span class="badge">HTML5</span><span class="badge">CSS3</span></div>
+        </div>
+        <div class="sk-group reveal d1">
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>Frameworks &amp; Libraries</div>
+          <div class="sk-badges"><span class="badge">React</span><span class="badge">React Native</span><span class="badge">Node.js</span><span class="badge">Express</span><span class="badge">Flask</span><span class="badge">Tailwind CSS</span><span class="badge">Expo</span></div>
+        </div>
+        <div class="sk-group reveal d2">
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Databases</div>
+          <div class="sk-badges"><span class="badge">PostgreSQL</span><span class="badge">MySQL</span><span class="badge">MongoDB</span><span class="badge">Firestore</span><span class="badge">SQLite</span></div>
+        </div>
+        <div class="sk-group reveal">
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>AI / Machine Learning</div>
+          <div class="sk-badges"><span class="badge">scikit-learn</span><span class="badge">TensorFlow</span><span class="badge">Pandas</span><span class="badge">NumPy</span><span class="badge">Matplotlib</span><span class="badge">OpenAI API</span></div>
+        </div>
+        <div class="sk-group reveal d1">
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>Tools &amp; DevOps</div>
+          <div class="sk-badges"><span class="badge">Git</span><span class="badge">GitHub</span><span class="badge">Docker</span><span class="badge">Linux</span><span class="badge">Vercel</span><span class="badge">Postman</span><span class="badge">VS Code</span></div>
+        </div>
+        <div class="sk-group reveal d2">
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Currently Studying</div>
+          <div class="sk-badges"><span class="badge badge-accent">Data Structures &amp; Algorithms</span><span class="badge badge-accent">Software Engineering</span><span class="badge badge-accent">Operating Systems</span><span class="badge badge-accent">Computer Networks</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERIENCE ═══ -->
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="container">
+      <div>
+        <p class="section-eyebrow">Background</p>
+        <h2 class="section-title" id="exp-h">Experience &amp; Education</h2>
+        <p class="section-subtitle">Academic background, certifications, and extracurricular involvement.</p>
+      </div>
+      <div class="exp-list" role="list">
+
+        <div class="exp-item reveal" role="listitem">
+          <div class="exp-dot" aria-hidden="true"><div class="exp-dot-inner"></div></div>
+          <div class="exp-content">
+            <div class="exp-meta">
+              <span class="exp-role">BSc Computer Science</span>
+              <span class="exp-org">University of the Witwatersrand</span>
+              <span class="exp-date">2023 — Present</span>
+            </div>
+            <p class="exp-desc">Full-time undergraduate degree. Maintaining strong academic standing while dedicating significant time to personal projects and extracurricular involvement.</p>
+            <div class="exp-pts">
+              <p class="exp-pt">Relevant coursework: Data Structures &amp; Algorithms, Software Engineering, Machine Learning, Databases, Operating Systems, Computer Networks</p>
+              <p class="exp-pt">Active member of the Wits Computer Science Society — hackathons, industry speaker events, and workshops</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item reveal d1" role="listitem">
+          <div class="exp-dot" aria-hidden="true"><div class="exp-dot-inner"></div></div>
+          <div class="exp-content">
+            <div class="exp-meta">
+              <span class="exp-role">Google Data Analytics Certificate</span>
+              <span class="exp-org">Coursera · Google</span>
+              <span class="exp-date">2024</span>
+            </div>
+            <p class="exp-desc">6-course professional certificate covering the full data analysis lifecycle.</p>
+            <div class="exp-pts">
+              <p class="exp-pt">Data cleaning, analysis, and visualisation using SQL, R, and Tableau</p>
+              <p class="exp-pt">Capstone case study simulating a real-world business analytics scenario</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item reveal d2" role="listitem">
+          <div class="exp-dot" aria-hidden="true"><div class="exp-dot-inner"></div></div>
+          <div class="exp-content">
+            <div class="exp-meta">
+              <span class="exp-role">The Complete Web Developer Bootcamp</span>
+              <span class="exp-org">Udemy · Dr Angela Yu</span>
+              <span class="exp-date">2023</span>
+            </div>
+            <p class="exp-desc">Intensive full-stack web development course.</p>
+            <div class="exp-pts">
+              <p class="exp-pt">HTML, CSS, JavaScript, Node.js, Express, React, MongoDB, REST API design</p>
+              <p class="exp-pt">Built and deployed 5+ projects including a full-stack blog platform</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GITHUB STATS ═══ -->
+  <section id="github" aria-labelledby="gh-h">
+    <div class="container">
+      <div>
+        <p class="section-eyebrow">Activity</p>
+        <h2 class="section-title" id="gh-h">GitHub Activity</h2>
+        <p class="section-subtitle">Public contributions and coding activity. Repository stats fetched live from the GitHub API.</p>
+      </div>
+      <div class="gh-stats">
+        <div class="gh-stat reveal"><div class="gh-num" id="st-repos">—</div><div class="gh-lbl">Public Repositories</div></div>
+        <div class="gh-stat reveal d1"><div class="gh-num" id="st-stars">—</div><div class="gh-lbl">Stars Earned</div></div>
+        <div class="gh-stat reveal d2"><div class="gh-num" id="st-commits">—</div><div class="gh-lbl">Contributions (est.)</div></div>
+      </div>
+      <div class="contrib-wrap reveal">
+        <div class="contrib-hd">
+          <span class="contrib-lbl">Contribution Activity — 2024</span>
+          <a href="https://github.com/liamdube" target="_blank" rel="noopener noreferrer" class="contrib-gh" aria-label="View GitHub profile">
+            View on GitHub
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <div class="cg" id="cg" role="img" aria-label="Contribution calendar"></div>
+        <div class="contrib-ft">
+          <span class="contrib-ft-lbl">Less</span>
+          <div class="contrib-legend">
+            <div class="cl-cell" style="background:var(--bg-ov)"></div>
+            <div class="cl-cell l1"></div><div class="cl-cell l2"></div><div class="cl-cell l3"></div><div class="cl-cell l4"></div>
+          </div>
+          <span class="contrib-ft-lbl">More</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" aria-labelledby="contact-h">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <p class="section-eyebrow">Contact</p>
+          <h2 class="contact-title" id="contact-h">Let's work together.</h2>
+          <p class="contact-sub">Actively seeking software engineering internships for 2025. Whether you have an opportunity, a project to collaborate on, or just want to connect — I'd love to hear from you.</p>
+          <div class="contact-links">
+            <a href="mailto:liam.dube@email.com" class="clink reveal" aria-label="Email">
+              <div class="clink-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div class="clink-txt"><div class="clink-lbl">Email</div><div class="clink-val">liam.dube@email.com</div></div>
+              <span class="clink-arr" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+            </a>
+            <a href="https://linkedin.com/in/liamdube" target="_blank" rel="noopener noreferrer" class="clink reveal d1" aria-label="LinkedIn">
+              <div class="clink-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+              <div class="clink-txt"><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/liamdube</div></div>
+              <span class="clink-arr" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+            </a>
+            <a href="https://github.com/liamdube" target="_blank" rel="noopener noreferrer" class="clink reveal d2" aria-label="GitHub">
+              <div class="clink-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></div>
+              <div class="clink-txt"><div class="clink-lbl">GitHub</div><div class="clink-val">github.com/liamdube</div></div>
+              <span class="clink-arr" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <form class="cform reveal" id="cform" novalidate aria-label="Contact form">
+            <div class="form-row">
+              <div class="ff">
+                <label for="fn" class="fl">Name <span class="req">*</span></label>
+                <input type="text" id="fn" name="name" class="fi" placeholder="Your name" autocomplete="name" required />
+                <span class="fe" id="en">Please enter your name.</span>
+              </div>
+              <div class="ff">
+                <label for="fe2" class="fl">Email <span class="req">*</span></label>
+                <input type="email" id="fe2" name="email" class="fi" placeholder="your@email.com" autocomplete="email" required />
+                <span class="fe" id="ee">Please enter a valid email.</span>
+              </div>
+            </div>
+            <div class="ff">
+              <label for="fs" class="fl">Subject</label>
+              <input type="text" id="fs" name="subject" class="fi" placeholder="Internship opportunity at…" />
+            </div>
+            <div class="ff">
+              <label for="fm" class="fl">Message <span class="req">*</span></label>
+              <textarea id="fm" name="message" class="ft" placeholder="Tell me about the opportunity or what you'd like to discuss…" required></textarea>
+              <span class="fe" id="em">Please write a message.</span>
+            </div>
+            <button type="submit" class="btn btn-primary fsub" id="fsubmit">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+          </form>
+          <div class="fsuccess" id="fsuccess" role="status" aria-live="polite">
+            <div class="fsuccess-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <h3 style="font-size:1.125rem;letter-spacing:-.02em">Message sent!</h3>
+            <p style="font-size:.875rem;color:var(--text-2)">Thanks for reaching out. I'll reply within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="foot-inner">
+      <div class="foot-l">
+        <span class="foot-logo">LD<span>.</span></span>
+        <span class="foot-copy">© <span id="yr"></span> Liam Dube. All rights reserved.</span>
+      </div>
+      <div class="foot-r">
+        <nav class="foot-links" aria-label="Footer navigation">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <a href="./Liam_Dube_CV.pdf" download>Resume</a>
+        </nav>
+        <span class="foot-upd" id="upd"></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="btt" aria-label="Scroll to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+
+</body>
+</html>
