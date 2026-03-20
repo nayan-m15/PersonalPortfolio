@@ -96,7 +96,8 @@
     /* ═══════════════════════════════════════
        NAV
     ═══════════════════════════════════════ */
-    #nav{position:sticky;top:0;z-index:100;height:56px;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;backdrop-filter:blur(0);transition:all var(--transition-md)}
+    
+    #nav{position:sticky;top:0;z-index:100;height:56px;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;backdrop-filter:blur(0);transition:all var(--transition-md); }
     #nav.scrolled{background:rgba(9,9,11,.88);border-bottom-color:var(--border);backdrop-filter:blur(12px) saturate(1.5)}
     [data-theme="light"] #nav.scrolled{background:rgba(255,255,255,.88)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;width:100%;max-width:var(--max-w);margin:0 auto;padding:0 1.5rem}
@@ -123,6 +124,7 @@
     .mob-links a{display:block;padding:.75rem 1rem;font-size:1rem;font-weight:500;color:var(--text-2);border-radius:var(--radius);transition:color var(--transition),background var(--transition)}
     .mob-links a:hover{color:var(--text);background:var(--bg-ov)}
     .mob-resume{margin-top:1rem;width:100%;justify-content:center}
+  
 
     /* ═══════════════════════════════════════
        HERO
