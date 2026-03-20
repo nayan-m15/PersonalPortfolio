@@ -234,6 +234,17 @@ if (btt) {
   btt.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 }
 
+// ─── Avatar expand ────────────────────────────────────
+const avatar  = document.querySelector('.nav-avatar');
+const overlay = document.getElementById('avatar-overlay');
+
+avatar.addEventListener('click', () => overlay.classList.add('open'));
+overlay.addEventListener('click', () => overlay.classList.remove('open'));
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') overlay.classList.remove('open');
+});
+
 // ─── Active nav link ──────────────────────────────────
 const secs = document.querySelectorAll('section[id]');
 const nls  = document.querySelectorAll('.nav-links a');
@@ -267,40 +278,109 @@ const ro = new IntersectionObserver(entries => {
 }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-// ─── GitHub stats ─────────────────────────────────────
-(async () => {
-  try {
-    const u = 'nayan-m15';
-    const r = await fetch(`https://api.github.com/users/${u}`);
-    if(!r.ok) return;
-    const d = await r.json();
-    const reposEl = document.getElementById('st-repos');
-    if (reposEl) reposEl.textContent = d.public_repos ?? '—';
-    
-    // Stars: sum across repos (basic version)
-    const rr = await fetch(`https://api.github.com/users/${u}/repos?per_page=100`);
-    if(rr.ok){
-      const repos = await rr.json();
-      const stars = repos.reduce((acc, repo) => acc + (repo.stargazers_count||0), 0);
-      const starsEl = document.getElementById('st-stars');
-      const commitsEl = document.getElementById('st-commits');
-      if (starsEl) starsEl.textContent = stars;
-      if (commitsEl) commitsEl.textContent = repos.length > 0 ? repos.length * 12 + '+' : '—';
-    }
-  } catch(_) { /* silent fail */ }
-})();
 
-// ─── Contribution graph (mock) ────────────────────────
-(() => {
-  const g = document.getElementById('cg');
-  if (!g) return;
-  const lvls = [0,0,1,0,2,0,0,1,3,2,0,0,1,2,4,3,0,1,2,0,3,1,2,4,3,0,1,2,3,4,1,0,2,3,4,1,2,0,3,4,1,2,0,3,4,1,2,0,3,4,2,1,0,4,3,1,2,0,4,3,1,2,0,3,4,1,2,0,3,4,1,2,0,3,4,1,2,0,3,4,1,2,3,0,4,1,2,3,0,4,1,2,3,0,4,1,2,0,3,4];
-  let h = '';
-  for(let i=0; i<53*7; i++){
-    const l = lvls[i % lvls.length];
-    h += `<div class="cc${l>0?' l'+l:''}" aria-hidden="true"></div>`;
-  }
-  g.innerHTML = h;
+// ─── GitHub stats ─────────────────────────────────────
+
+(async () => {
+  const u = 'nayan-m15';
+
+  try {
+    // ── Profile + repos ──────────────────────────────
+    const [userRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${u}`),
+      fetch(`https://api.github.com/users/${u}/repos?per_page=100&type=owner`)
+    ]);
+
+    if (userRes.ok) {
+      const user = await userRes.json();
+      const reposEl = document.getElementById('st-repos');
+      if (reposEl) reposEl.textContent = user.public_repos ?? '—';
+    }
+
+    let repos = [];
+    if (reposRes.ok) {
+      repos = await reposRes.json();
+      const stars = repos.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
+      const starsEl = document.getElementById('st-stars');
+      if (starsEl) starsEl.textContent = stars;
+    }
+
+    // ── Fetch commits from each repo directly ────────
+    // Only look back 1 year
+    const since = new Date();
+    since.setFullYear(since.getFullYear() - 1);
+    const sinceISO = since.toISOString();
+
+    const commitsByDay = {};
+    let totalCommits = 0;
+
+    // Fetch in parallel, max 10 repos to avoid rate limit
+    const activeRepos = repos
+      .filter(r => !r.fork)
+      .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+      .slice(0, 10);
+
+    await Promise.all(activeRepos.map(async (repo) => {
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${u}/${repo.name}/commits?author=${u}&per_page=100&since=${sinceISO}`
+        );
+        if (!res.ok) return;
+        const commits = await res.json();
+        if (!Array.isArray(commits)) return;
+
+        commits.forEach(c => {
+          const date = c.commit?.author?.date?.slice(0, 10);
+          if (date) {
+            commitsByDay[date] = (commitsByDay[date] || 0) + 1;
+            totalCommits++;
+          }
+        });
+      } catch (_) {}
+    }));
+
+    const commitsEl = document.getElementById('st-commits');
+    if (commitsEl) commitsEl.textContent = totalCommits > 0 ? `${totalCommits}+` : '—';
+
+    // ── Build contribution grid ──────────────────────
+    const g = document.getElementById('cg');
+    if (!g) return;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const startDate = new Date(today);
+    startDate.setDate(startDate.getDate() - (52 * 7) - startDate.getDay());
+
+    const maxCommits = Math.max(1, ...Object.values(commitsByDay));
+
+    let html = '';
+    for (let i = 0; i < 53 * 7; i++) {
+      const d = new Date(startDate);
+      d.setDate(startDate.getDate() + i);
+
+      if (d > today) {
+        html += `<div class="cc" aria-hidden="true"></div>`;
+        continue;
+      }
+
+      const key = d.toISOString().slice(0, 10);
+      const count = commitsByDay[key] || 0;
+
+      let level = 0;
+      if (count > 0) {
+        const ratio = count / maxCommits;
+        if      (ratio <= 0.25) level = 1;
+        else if (ratio <= 0.5)  level = 2;
+        else if (ratio <= 0.75) level = 3;
+        else                    level = 4;
+      }
+
+      html += `<div class="cc${level > 0 ? ' l' + level : ''}" title="${key}: ${count} commit${count !== 1 ? 's' : ''}" aria-hidden="true"></div>`;
+    }
+    g.innerHTML = html;
+
+  } catch (_) {}
 })();
 
 // ─── Contact form ─────────────────────────────────────

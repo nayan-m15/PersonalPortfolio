@@ -441,6 +441,37 @@ pre {
   border-color: var(--accent);
 }
 
+#avatar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+#avatar-overlay.open {
+  display: flex;
+}
+
+#avatar-expanded {
+  width: min(380px, 85vw);
+  height: min(380px, 85vw);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  animation: popIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
 .nav-links {
   display: none;
   align-items: center;
@@ -1715,6 +1746,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  text-align: center;
 }
 
 .foot-logo {
@@ -1731,6 +1763,7 @@ footer {
 .foot-copy {
   font-size: 0.75rem;
   color: var(--text-3);
+  
 }
 
 .foot-r {
