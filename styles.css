@@ -26,6 +26,7 @@
   --bg    : #09090B;
   --bg-el : #111113;
   --bg-ov : #18181B;
+  --hero-bg-image: linear-gradient(rgba(9, 9, 11, 0.72), rgba(9, 9, 11, 0.82)), url('./Background1.jpg');
 
   --border    : #27272A;
   --border-hi : #3F3F46;
@@ -52,6 +53,7 @@
   --bg    : #FFFFFF;
   --bg-el : #F9F9FB;
   --bg-ov : #F4F4F5;
+  --hero-bg-image: linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.82)), url('./Background.jpg');
 
   --border    : #E4E4E7;
   --border-hi : #D4D4D8;
@@ -617,19 +619,19 @@ pre {
   position: relative;
   overflow: hidden;
   text-align: center;
+  background-color: var(--bg);
+  background-image: var(--hero-bg-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 48px 48px;
-  opacity: 0.35;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  background: transparent;
+  pointer-events: none;
 }
 
 .hero-avail {
