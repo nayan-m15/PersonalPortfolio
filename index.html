@@ -473,7 +473,9 @@
         </div>
 
         <div>
-          <form class="cform reveal" id="cform" novalidate aria-label="Contact form">
+          <form class="cform reveal" id="cform" action="https://formspree.io/f/mykqzewd" method="POST" novalidate aria-label="Contact form">
+            <input type="hidden" name="_subject" value="Portfolio contact form submission" />
+            <input type="text" name="_gotcha" class="fhp" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="form-row">
               <div class="ff">
                 <label for="fn" class="fl">Name <span class="req">*</span></label>
@@ -495,6 +497,7 @@
               <textarea id="fm" name="message" class="ft" placeholder="Tell me about the opportunity or what you'd like to discuss…" required></textarea>
               <span class="fe" id="em">Please write a message.</span>
             </div>
+            <div class="fform-status" id="fform-status" role="status" aria-live="polite"></div>
             <button type="submit" class="btn btn-primary fsub" id="fsubmit">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               Send Message

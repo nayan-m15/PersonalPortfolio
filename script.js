@@ -422,12 +422,14 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 // ─── Contact form ─────────────────────────────────────
 const form = document.getElementById('cform');
 const succ = document.getElementById('fsuccess');
+const formStatus = document.getElementById('fform-status');
 function val(id, errId, fn){
   const el = document.getElementById(id), er = document.getElementById(errId);
   if (!el || !er) return true;
   const ok = fn(el.value.trim());
   el.classList.toggle('err', !ok); 
   er.classList.toggle('show', !ok);
+  el.setAttribute('aria-invalid', String(!ok));
   return ok;
 }
 if (form) {
@@ -437,6 +439,54 @@ if (form) {
     const ok2 = val('fe2','ee', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
     const ok3 = val('fm','em', v => v.length >= 10);
     if(!ok1 || !ok2 || !ok3) return;
+    const realSubmitBtn = document.getElementById('fsubmit');
+    const btnMarkup = realSubmitBtn ? realSubmitBtn.innerHTML : '';
+    if (formStatus) {
+      formStatus.textContent = '';
+      formStatus.classList.remove('show', 'is-error');
+    }
+    if (realSubmitBtn) {
+      realSubmitBtn.disabled = true;
+      realSubmitBtn.textContent = 'Sending...';
+    }
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        let message = 'Something went wrong while sending your message. Please try again.';
+        try {
+          const result = await response.json();
+          if (Array.isArray(result.errors) && result.errors.length > 0) {
+            message = result.errors.map(error => error.message).join(' ');
+          }
+        } catch (error) {
+          console.error('Unable to read Formspree error response:', error);
+        }
+        throw new Error(message);
+      }
+
+      form.reset();
+      form.style.display = 'none';
+      if (succ) succ.classList.add('show');
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      if (formStatus) {
+        formStatus.textContent = error.message || 'Unable to send your message right now. Please email me directly instead.';
+        formStatus.classList.add('show', 'is-error');
+      }
+    } finally {
+      if (realSubmitBtn) {
+        realSubmitBtn.disabled = false;
+        realSubmitBtn.innerHTML = btnMarkup;
+      }
+    }
+    return;
     const btn = document.getElementById('fsubmit');
     if (btn) {
       btn.disabled = true; 
@@ -453,6 +503,12 @@ if (form) {
   const element = document.getElementById(id);
   if (element) {
     element.addEventListener('input', function(){ this.classList.remove('err'); });
+  }
+});
+['fn','fe2','fm'].forEach(id => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.addEventListener('input', function(){ this.setAttribute('aria-invalid', 'false'); });
   }
 });
 

@@ -1686,6 +1686,11 @@ pre {
   display: block;
 }
 
+.fhp {
+  position: absolute;
+  left: -9999px;
+}
+
 .ft {
   min-height: 128px;
   resize: vertical;
@@ -1696,6 +1701,24 @@ pre {
   width: 100%;
   justify-content: center;
   padding: 0.75rem 1.5rem;
+}
+
+.fform-status {
+  display: none;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.fform-status.show {
+  display: block;
+}
+
+.fform-status.is-error {
+  color: #fca5a5;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
 }
 
 
