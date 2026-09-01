@@ -106,51 +106,100 @@ const ro = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
 
-// ─── GitHub stats (with localStorage cache) ───────────
+// ─── GitHub stats (with localStorage cache + rate limiting) ───
 (async () => {
   const u = 'nayan-m15';
   const CACHE_KEY = 'gh_stats_' + u;
+  const RATE_KEY  = 'gh_rate_' + u;
   const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
   const requiredIds = ['st-repos', 'st-stars', 'st-commits', 'cg'];
   if (requiredIds.some(id => !document.getElementById(id))) return;
 
+  // ── Helpers ──────────────────────────────────────────
+  const readJSON = (key) => {
+    try { return JSON.parse(localStorage.getItem(key)); } catch (_) { return null; }
+  };
+  const writeJSON = (key, val) => {
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) { /* full */ }
+  };
+
+  // ── Check rate-limit backoff ─────────────────────────
+  const rateInfo  = readJSON(RATE_KEY);
+  const isBlocked = rateInfo && rateInfo.resetAt && Date.now() < rateInfo.resetAt;
+
   // ── Try to use cached data ──────────────────────────
   let cached = null;
+  let cacheRaw = null;
   try {
-    const raw = localStorage.getItem(CACHE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (parsed.timestamp && Date.now() - parsed.timestamp < CACHE_TTL) {
-        cached = parsed.data;
+    cacheRaw = readJSON(CACHE_KEY);
+    if (cacheRaw) {
+      if (cacheRaw.timestamp && Date.now() - cacheRaw.timestamp < CACHE_TTL) {
+        cached = cacheRaw.data;
+      } else if (isBlocked) {
+        // Rate-limited — use stale cache rather than failing
+        cached = cacheRaw.data;
       }
     }
-  } catch (_) { /* cache miss — fetch fresh */ }
+  } catch (_) { /* cache miss */ }
 
   let publicRepos, stars, commitsByDay, totalCommits;
 
   if (cached) {
     ({ publicRepos, stars, commitsByDay, totalCommits } = cached);
+  } else if (isBlocked) {
+    // Rate-limited with no cache at all — bail silently
+    return;
   } else {
+    // ── Rate-limited fetch wrapper ───────────────────
+    let aborted = false;
+
+    const ghFetch = async (url) => {
+      if (aborted) return null;
+      const res = await fetch(url);
+
+      // Update rate-limit state from every response
+      const remaining = parseInt(res.headers.get('X-RateLimit-Remaining') ?? '', 10);
+      const resetEpoch = parseInt(res.headers.get('X-RateLimit-Reset') ?? '', 10) * 1000;
+
+      if (res.status === 403 || res.status === 429) {
+        // Rate-limited — record the reset time and stop further requests
+        const resetAt = resetEpoch || (Date.now() + 60 * 60 * 1000);
+        writeJSON(RATE_KEY, { remaining: 0, resetAt });
+        aborted = true;
+        return null;
+      }
+
+      // Proactively block if we've exhausted the budget (leave 2-request buffer)
+      if (!isNaN(remaining) && remaining <= 2 && resetEpoch) {
+        writeJSON(RATE_KEY, { remaining, resetAt: resetEpoch });
+      } else if (rateInfo) {
+        // Clear stale block if we have budget again
+        writeJSON(RATE_KEY, { remaining, resetAt: 0 });
+      }
+
+      return res;
+    };
+
     try {
       // ── Profile + repos ──────────────────────────────
       const [userRes, reposRes] = await Promise.all([
-        fetch(`https://api.github.com/users/${u}`),
-        fetch(`https://api.github.com/users/${u}/repos?per_page=100&type=owner`)
+        ghFetch(`https://api.github.com/users/${u}`),
+        ghFetch(`https://api.github.com/users/${u}/repos?per_page=100&type=owner`)
       ]);
 
-      if (userRes.ok) {
+      if (userRes && userRes.ok) {
         const user = await userRes.json();
         publicRepos = user.public_repos ?? null;
       }
 
       let repos = [];
-      if (reposRes.ok) {
+      if (reposRes && reposRes.ok) {
         repos = await reposRes.json();
         stars = repos.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
       }
 
-      // ── Fetch commits from each repo ────────────────
+      // ── Fetch commits from each repo (sequentially to respect limits) ──
       const since = new Date();
       since.setFullYear(since.getFullYear() - 1);
       const sinceISO = since.toISOString();
@@ -163,15 +212,17 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
         .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
         .slice(0, 10);
 
-      await Promise.allSettled(activeRepos.map(async (repo) => {
+      // Process sequentially so we can stop early if rate-limited
+      for (const repo of activeRepos) {
+        if (aborted) break;
         try {
-          const res = await fetch(
+          const res = await ghFetch(
             `https://api.github.com/repos/${u}/${repo.name}/commits?author=${u}&per_page=100&since=${sinceISO}`
           );
-          if (!res.ok) return;
+          if (!res || !res.ok) continue;
 
           const commits = await res.json();
-          if (!Array.isArray(commits)) return;
+          if (!Array.isArray(commits)) continue;
 
           commits.forEach(c => {
             const date = c.commit?.author?.date?.slice(0, 10);
@@ -181,19 +232,21 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
             }
           });
         } catch (_) { /* skip failed repo */ }
-      }));
+      }
 
       // ── Save to cache ──────────────────────────────
-      try {
-        localStorage.setItem(CACHE_KEY, JSON.stringify({
-          timestamp: Date.now(),
-          data: { publicRepos, stars, commitsByDay, totalCommits }
-        }));
-      } catch (_) { /* storage full — continue without caching */ }
+      writeJSON(CACHE_KEY, {
+        timestamp: Date.now(),
+        data: { publicRepos, stars, commitsByDay, totalCommits }
+      });
 
     } catch (_) {
-      // Network error — show fallback
-      return;
+      // Network error — fall back to stale cache if available
+      if (cacheRaw && cacheRaw.data) {
+        ({ publicRepos, stars, commitsByDay, totalCommits } = cacheRaw.data);
+      } else {
+        return;
+      }
     }
   }
 
