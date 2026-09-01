@@ -4,11 +4,20 @@
   <!-- ═══ META & SEO ═══ -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Nayan Makanjee — 3rd-year Computer Science student at Wits. Building software in web development, mobile apps, and AI. Open to internships and collaboration." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nayan Makanjee - Computer Science Student" />
+  <meta property="og:description" content="3rd-year CS student at Wits passionate about web development, mobile apps, and AI. View my projects and get in touch." />
+  <meta property="og:image" content="logo1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nayan Makanjee - Computer Science Student" />
+  <meta name="twitter:description" content="3rd-year CS student at Wits passionate about web development, mobile apps, and AI." />
 
   <link rel="stylesheet" href="styles.css">
 
-  <title>Nayan Makanjee - Computer Science Student</title>  
+  <title>Nayan Makanjee - Computer Science Student</title>
   <meta name="keywords" content="Nayan Makanjee, software developer, computer science, Wits, portfolio, React, Python, machine learning" />
   <meta name="author" content="Nayan Makanjee" />
   <meta name="robots" content="index, follow" />
@@ -48,7 +57,7 @@
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <a href="./Nayan_Makanjee_CV.pdf" download class="btn btn-secondary" id="nav-resume" style="display:none">
+        <a href="./Nayan_Makanjee_CV.pdf" download class="btn btn-secondary" id="nav-resume">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Resume
         </a>
@@ -83,7 +92,7 @@
         Available for internships, learnerships and vac work
       </div>
       <h1 class="hero-name" id="hero-name">Nayan Makanjee</h1>
-      <p class="hero-title">Computer Science Student &nbsp;</p>
+      <p class="hero-title">Computer Science Student</p>
       <p class="hero-bio">I'm a 3rd-year Computer Science student at the University of Witwatersrand who is passionate about building software that solves real world problems. My interests include web development, mobile applications and artificial intelligence. I value clean architecture, thoughtful interfaces, and code that other engineers enjoy working with.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary" data-action="scroll" data-target="projects"> 
@@ -116,9 +125,6 @@
                             <h3 class="card-title">Academic Excellence</h3>
                             <p class="card-desc">Honours distinction in Grade 12 with 4 years of academic colors and leadership as Prefect.</p>
                         </div>
-                        <!--
-                        <a href="#education" class="feature-link">See Achievements <i class="fas fa-arrow-right"></i></a>
-                        -->
                         
                     </div>
                 </div>
@@ -142,58 +148,6 @@
   </section>
 
   
-  <!-- ═══ FEATURED PROJECT ═══ --><!--
-  <section id="featured" aria-label="Featured project">
-    <div class="container">
-      <p class="feat-eyebrow">Featured Project</p>
-      <article class="feat-card reveal">
-        <div>
-          <div class="feat-meta">
-            <span class="badge badge-accent">Full-Stack</span>
-            <span class="badge badge-success">Live</span>
-          </div>
-          <h2 class="feat-name">AI Study Assistant</h2>
-          <p class="feat-desc">Students at Wits struggle to convert dense lecture notes into effective study material. I built a full-stack web app that accepts PDF uploads, processes them through the OpenAI API, and returns personalised multiple-choice quizzes — reducing estimated exam prep time by 40%.</p>
-          <div class="feat-stack">
-            <span class="badge">Python</span><span class="badge">Flask</span><span class="badge">React</span><span class="badge">PostgreSQL</span><span class="badge">OpenAI API</span><span class="badge">JWT Auth</span><span class="badge">Vercel</span>
-          </div>
-          <div class="feat-links">
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live Demo
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              Source Code
-            </a>
-          </div>
-        </div>
-        <div class="code-win" aria-hidden="true">
-          <div class="code-bar">
-            <span class="cd cd-r"></span><span class="cd cd-y"></span><span class="cd cd-g"></span>
-            <span class="code-fn">quiz_generator.py</span>
-          </div>
-          <div class="code-body">
-            <div class="cl"><span class="ln">1</span><span><span class="kw">from</span> <span class="vr">openai</span> <span class="kw">import</span> <span class="vr">OpenAI</span></span></div>
-            <div class="cl"><span class="ln">2</span><span><span class="kw">from</span> <span class="vr">app.models</span> <span class="kw">import</span> <span class="vr">Quiz</span></span></div>
-            <div class="cl"><span class="ln">3</span><span></span></div>
-            <div class="cl"><span class="ln">4</span><span class="cm"># Generate questions from lecture text</span></div>
-            <div class="cl"><span class="ln">5</span><span><span class="kw">def</span> <span class="fn">generate_quiz</span>(<span class="vr">text</span>: <span class="vr">str</span>, <span class="vr">n</span>: <span class="vr">int</span> = <span class="nm">10</span>):</span></div>
-            <div class="cl"><span class="ln">6</span><span>&nbsp;&nbsp;<span class="vr">client</span> = <span class="fn">OpenAI</span>()</span></div>
-            <div class="cl"><span class="ln">7</span><span>&nbsp;&nbsp;<span class="vr">resp</span> = <span class="vr">client</span>.<span class="vr">chat</span>.<span class="vr">completions</span>.<span class="fn">create</span>(</span></div>
-            <div class="cl"><span class="ln">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">model</span>=<span class="str">"gpt-4o-mini"</span>,</span></div>
-            <div class="cl"><span class="ln">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">messages</span>=[{</span></div>
-            <div class="cl"><span class="ln">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"role"</span>: <span class="str">"user"</span>,</span></div>
-            <div class="cl"><span class="ln">11</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"content"</span>: <span class="fn">f</span><span class="str">"Generate {n} MCQs\n{text}"</span></span></div>
-            <div class="cl"><span class="ln">12</span><span>&nbsp;&nbsp;&nbsp;&nbsp;}]</span></div>
-            <div class="cl"><span class="ln">13</span><span>&nbsp;&nbsp;)</span></div>
-            <div class="cl"><span class="ln">14</span><span>&nbsp;&nbsp;<span class="kw">return</span> <span class="vr">Quiz</span>.<span class="fn">from_response</span>(<span class="vr">resp</span>)</span></div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section> -->
-
   <!-- ═══ PROJECTS ═══ -->
   <section id="projects" aria-labelledby="projects-h">
     <div class="container">
@@ -309,62 +263,10 @@
         <p class="cert-desc"></p>
         <div class="cert-footer">
           <span class="cert-date">As of March 2026</span>
-          
-        </div>
-      </article>
-    </div>  
-    <!--
-    <div class="cert-grid">
-
-      <article class="cert-card reveal">
-        <div class="cert-card-top">
-          <div class="cert-issuer-logo" aria-hidden="true">G</div>
-          <span class="badge badge-success">Verified</span>
-        </div>
-        <h3 class="cert-name">Google Data Analytics Certificate</h3>
-        <p class="cert-issuer">Google · Coursera</p>
-        <p class="cert-desc">Covers the full data analysis lifecycle — data cleaning, SQL, R, Tableau, and a real-world capstone project.</p>
-        <div class="cert-footer">
-          <span class="cert-date">Issued Jan 2024</span>
-          <a href="#" target="_blank" rel="noopener noreferrer" class="cert-link">
-            View credential
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
         </div>
       </article>
 
-      <article class="cert-card reveal d1">
-        <div class="cert-card-top">
-          <div class="cert-issuer-logo" aria-hidden="true">U</div>
-          <span class="badge badge-success">Verified</span>
-        </div>
-        <h3 class="cert-name">The Complete Web Developer Bootcamp</h3>
-        <p class="cert-issuer">Udemy · Dr Angela Yu</p>
-        <p class="cert-desc">Full-stack web development covering HTML, CSS, JavaScript, Node.js, React, MongoDB, and REST API design.</p>
-        <div class="cert-footer">
-          <span class="cert-date">Issued Aug 2023</span>
-          <a href="#" target="_blank" rel="noopener noreferrer" class="cert-link">
-            View credential
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <article class="cert-card reveal d2">
-        <div class="cert-card-top">
-          <div class="cert-issuer-logo" aria-hidden="true">A</div>
-          <span class="badge" style="color:var(--warning, #FBBF24); background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.2);">In Progress</span>
-        </div>
-        <h3 class="cert-name">AWS Cloud Practitioner</h3>
-        <p class="cert-issuer">Amazon Web Services</p>
-        <p class="cert-desc">Foundational certification covering AWS cloud concepts, services, security, architecture, and pricing.</p>
-        <div class="cert-footer">
-          <span class="cert-date">Expected mid-2025</span>
-          <span class="cert-link" style="opacity:0.4;cursor:default;">View credential</span>
-        </div>
-      </article>
-
-    </div> -->
+    </div>
   </div>
 </section>
 
@@ -526,13 +428,13 @@
     <div class="foot-inner">
       <div class="foot-l">
         <div id="avatar-overlay" aria-modal="true" role="dialog" aria-label="Profile photo">
-        <img src="./profile.jpg" alt="Nayan Makanjee" id="avatar-expanded" />
+        <img src="./profile.jpg" alt="Nayan Makanjee" id="avatar-expanded" loading="lazy" />
         </div>
         <span class="foot-logo">NM<span>.</span></span>
         <span class="foot-copy">© <span id="yr"></span> Nayan Makanjee. All rights reserved.</span>
       </div>
       <div class="social-links">
-                    <a href="https://github.com/nayan-m15" class="social-link"><i class="fab fa-github"></i>
+                    <a href="https://github.com/nayan-m15" class="social-link"><i class="fab fa-github"></i></a>
                     <a href="https://linkedin.com/in/nayan-m15" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://www.instagram.com/nayan.m15/" class="social-link"><i class="fab fa-instagram"></i></a>
                 </div>
