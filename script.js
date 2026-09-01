@@ -8,16 +8,6 @@ themeBtn.addEventListener('click', () => {
   localStorage.setItem('theme', next);
 });
 
-/*
-// ─── Show resume button after scroll ──────────────────
-const navResume = document.getElementById('nav-resume');
-window.addEventListener('scroll', () => {
-  if(window.scrollY > 200) navResume.style.display = 'inline-flex';
-}, {passive:true});
-*/
-const navResume = document.getElementById('nav-resume');
-navResume.style.display = 'inline-flex';
-
 
 // ─── Mobile menu ──────────────────────────────────────
 const menuBtn = document.getElementById('menu-btn');
@@ -30,196 +20,31 @@ menuBtn.addEventListener('click', () => {
 document.querySelectorAll('.mob-close').forEach(a => {
   a.addEventListener('click', () => {
     mobMenu.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded','false');
+    menuBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   });
 });
 
 
-
 // ─── Smooth scrolling with highlight effect ───────────
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     const targetId = this.getAttribute('href');
-    
-    if (targetId !== '#') {
-      e.preventDefault();
-      const target = document.querySelector(targetId);
-      
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-        
-        // Add highlight effect
-        target.style.transition = 'background-color 0.3s ease';
-        target.style.backgroundColor = 'rgba(100, 108, 255, 0.1)';
-        setTimeout(() => {
-          target.style.backgroundColor = '';
-        }, 1000);
-      }
-    }
-  });
-});
-
-// ─── Interactive resume download ──────────────────────
-const resumeBtn = document.getElementById('resumeBtn');
-if (resumeBtn) {
-  resumeBtn.addEventListener('click', function(e) {
+    if (targetId === '#') return;
     e.preventDefault();
-    
-    // Show confirmation dialog
-    const userConfirmed = confirm('Would you like to download the resume?');
-    
-    if (userConfirmed) {
-      // Add loading state
-      const originalText = this.innerHTML;
-      this.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Downloading...';
-      this.style.opacity = '0.7';
-      
-      // Replace with your actual resume file path
-      setTimeout(() => {
-        const link = document.createElement('a');
-        link.href = '/resume.pdf'; // Update with actual resume path
-        link.download = 'Nayan_Resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        // Reset button
-        this.innerHTML = originalText;
-        this.style.opacity = '';
-        
-        // Show success message
-        showToast('Resume download started!', 'success');
-      }, 500);
-    }
-  });
-}
+    const target = document.querySelector(targetId);
+    if (!target) return;
 
-// ─── Social links with hover effects and tracking ─────
-const socialLinks = document.querySelectorAll('.hero-social');
-socialLinks.forEach(link => {
-  // Add click tracking
-  link.addEventListener('click', function(e) {
-    const platform = this.getAttribute('aria-label');
-    console.log(`Opening ${platform} profile`); // Replace with analytics tracking
-    
-    // Show toast notification
-    showToast(`Opening ${platform} profile...`, 'info');
-  });
-  
-  // Add ripple effect on click
-  link.addEventListener('click', function(e) {
-    const ripple = document.createElement('span');
-    ripple.classList.add('ripple-effect');
-    ripple.style.left = `${e.clientX - this.offsetLeft}px`;
-    ripple.style.top = `${e.clientY - this.offsetTop}px`;
-    this.style.position = 'relative';
-    this.style.overflow = 'hidden';
-    this.appendChild(ripple);
-    
-    setTimeout(() => {
-      ripple.remove();
-    }, 600);
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Highlight using theme-aware accent colour
+    const accentBg = getComputedStyle(root).getPropertyValue('--accent-bg').trim();
+    target.style.transition = 'background-color 0.3s ease';
+    target.style.backgroundColor = accentBg || 'rgba(96, 165, 250, 0.08)';
+    setTimeout(() => { target.style.backgroundColor = ''; }, 1000);
   });
 });
 
-// ─── Toast notification system ────────────────────────
-function showToast(message, type = 'info') {
-  // Remove existing toast
-  const existingToast = document.querySelector('.toast-notification');
-  if (existingToast) {
-    existingToast.remove();
-  }
-  
-  // Create toast element
-  const toast = document.createElement('div');
-  toast.className = `toast-notification toast-${type}`;
-  toast.textContent = message;
-  toast.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 12px 24px;
-    background: ${type === 'success' ? '#10b981' : '#3b82f6'};
-    color: white;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    z-index: 1000;
-    animation: slideIn 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  `;
-  
-  document.body.appendChild(toast);
-  
-  // Remove after 3 seconds
-  setTimeout(() => {
-    toast.style.animation = 'slideOut 0.3s ease';
-    setTimeout(() => {
-      toast.remove();
-    }, 300);
-  }, 3000);
-}
-
-// ─── Add animations styles ────────────────────────────
-const animationStyles = document.createElement('style');
-animationStyles.textContent = `
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideOut {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  }
-  
-  .ripple-effect {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: scale(0);
-    animation: ripple 0.6s linear;
-    pointer-events: none;
-  }
-  
-  @keyframes ripple {
-    to {
-      transform: scale(4);
-      opacity: 0;
-    }
-  }
-  
-  .btn, .hero-social {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-  }
-  
-  .btn:active, .hero-social:active {
-    transform: scale(0.96);
-  }
-`;
-document.head.appendChild(animationStyles);
 
 // ─── Scroll: progress, nav, back-to-top ───────────────
 const prog = document.getElementById('progress');
@@ -228,24 +53,27 @@ const btt  = document.getElementById('btt');
 window.addEventListener('scroll', () => {
   const s = window.scrollY;
   const t = document.body.scrollHeight - window.innerHeight;
-  if (prog) prog.style.width = (s/t*100) + '%';
-  if (nav) nav.classList.toggle('scrolled', s > 10);
-  if (btt) btt.classList.toggle('vis', s > 400);
-}, {passive:true});
+  if (prog) prog.style.width = (s / t * 100) + '%';
+  if (nav)  nav.classList.toggle('scrolled', s > 10);
+  if (btt)  btt.classList.toggle('vis', s > 400);
+}, { passive: true });
 if (btt) {
-  btt.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
+
 
 // ─── Avatar expand ────────────────────────────────────
 const avatar  = document.querySelector('.nav-avatar');
 const overlay = document.getElementById('avatar-overlay');
 
-avatar.addEventListener('click', () => overlay.classList.add('open'));
-overlay.addEventListener('click', () => overlay.classList.remove('open'));
+if (avatar && overlay) {
+  avatar.addEventListener('click', () => overlay.classList.add('open'));
+  overlay.addEventListener('click', () => overlay.classList.remove('open'));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') overlay.classList.remove('open');
+  });
+}
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') overlay.classList.remove('open');
-});
 
 // ─── Active nav link ──────────────────────────────────
 const secs = document.querySelectorAll('section[id]');
@@ -253,221 +81,230 @@ const nls  = document.querySelectorAll('.nav-links a');
 if (secs.length && nls.length) {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if(e.isIntersecting) {
+      if (e.isIntersecting) {
         nls.forEach(l => {
           const href = l.getAttribute('href');
-          if (href === '#' + e.target.id) {
-            l.classList.add('active');
-          } else {
-            l.classList.remove('active');
-          }
+          l.classList.toggle('active', href === '#' + e.target.id);
         });
       }
     });
-  }, {rootMargin:'-40% 0px -55% 0px'});
-  
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
   secs.forEach(s => observer.observe(s));
 }
 
-// ─── Reveal ───────────────────────────────────────────
+
+// ─── Reveal animations ───────────────────────────────
 const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => { 
-    if(e.isIntersecting) { 
-      e.target.classList.add('in'); 
-      ro.unobserve(e.target); 
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      ro.unobserve(e.target);
     }
   });
-}, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
 
-// ─── GitHub stats ─────────────────────────────────────
-
+// ─── GitHub stats (with localStorage cache) ───────────
 (async () => {
   const u = 'nayan-m15';
+  const CACHE_KEY = 'gh_stats_' + u;
+  const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
+  const requiredIds = ['st-repos', 'st-stars', 'st-commits', 'cg'];
+  if (requiredIds.some(id => !document.getElementById(id))) return;
+
+  // ── Try to use cached data ──────────────────────────
+  let cached = null;
   try {
-    // Check if we're in a browser environment with required elements
-    const requiredElements = ['st-repos', 'st-stars', 'st-commits', 'cg'];
-    const missingElements = requiredElements.filter(id => !document.getElementById(id));
-    
-    if (missingElements.length > 0) {
-      console.error('Missing HTML elements:', missingElements);
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.timestamp && Date.now() - parsed.timestamp < CACHE_TTL) {
+        cached = parsed.data;
+      }
+    }
+  } catch (_) { /* cache miss — fetch fresh */ }
+
+  let publicRepos, stars, commitsByDay, totalCommits;
+
+  if (cached) {
+    ({ publicRepos, stars, commitsByDay, totalCommits } = cached);
+  } else {
+    try {
+      // ── Profile + repos ──────────────────────────────
+      const [userRes, reposRes] = await Promise.all([
+        fetch(`https://api.github.com/users/${u}`),
+        fetch(`https://api.github.com/users/${u}/repos?per_page=100&type=owner`)
+      ]);
+
+      if (userRes.ok) {
+        const user = await userRes.json();
+        publicRepos = user.public_repos ?? null;
+      }
+
+      let repos = [];
+      if (reposRes.ok) {
+        repos = await reposRes.json();
+        stars = repos.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
+      }
+
+      // ── Fetch commits from each repo ────────────────
+      const since = new Date();
+      since.setFullYear(since.getFullYear() - 1);
+      const sinceISO = since.toISOString();
+
+      commitsByDay = {};
+      totalCommits = 0;
+
+      const activeRepos = repos
+        .filter(r => !r.fork && r.name)
+        .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+        .slice(0, 10);
+
+      await Promise.allSettled(activeRepos.map(async (repo) => {
+        try {
+          const res = await fetch(
+            `https://api.github.com/repos/${u}/${repo.name}/commits?author=${u}&per_page=100&since=${sinceISO}`
+          );
+          if (!res.ok) return;
+
+          const commits = await res.json();
+          if (!Array.isArray(commits)) return;
+
+          commits.forEach(c => {
+            const date = c.commit?.author?.date?.slice(0, 10);
+            if (date) {
+              commitsByDay[date] = (commitsByDay[date] || 0) + 1;
+              totalCommits++;
+            }
+          });
+        } catch (_) { /* skip failed repo */ }
+      }));
+
+      // ── Save to cache ──────────────────────────────
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+          timestamp: Date.now(),
+          data: { publicRepos, stars, commitsByDay, totalCommits }
+        }));
+      } catch (_) { /* storage full — continue without caching */ }
+
+    } catch (_) {
+      // Network error — show fallback
       return;
     }
-
-    // ── Profile + repos ──────────────────────────────
-    const [userRes, reposRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${u}`),
-      fetch(`https://api.github.com/users/${u}/repos?per_page=100&type=owner`)
-    ]);
-
-    // Log rate limit info
-    console.log('User API remaining:', userRes.headers.get('X-RateLimit-Remaining'));
-    console.log('Repos API remaining:', reposRes.headers.get('X-RateLimit-Remaining'));
-
-    if (userRes.ok) {
-      const user = await userRes.json();
-      const reposEl = document.getElementById('st-repos');
-      reposEl.textContent = user.public_repos ?? '—';
-    } else {
-      console.error('User API error:', userRes.status);
-    }
-
-    let repos = [];
-    if (reposRes.ok) {
-      repos = await reposRes.json();
-      const stars = repos.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
-      const starsEl = document.getElementById('st-stars');
-      starsEl.textContent = stars;
-    } else {
-      console.error('Repos API error:', reposRes.status);
-    }
-
-    // ── Fetch commits from each repo directly ────────
-    const since = new Date();
-    since.setFullYear(since.getFullYear() - 1);
-    const sinceISO = since.toISOString();
-
-    const commitsByDay = {};
-    let totalCommits = 0;
-
-    // Filter and sort repos
-    const activeRepos = repos
-      .filter(r => !r.fork && r.name) // Ensure repo has a name
-      .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-      .slice(0, 10);
-
-    console.log(`Fetching commits from ${activeRepos.length} repos...`);
-
-    // Use Promise.allSettled to avoid failing if one repo fails
-    const results = await Promise.allSettled(activeRepos.map(async (repo) => {
-      try {
-        const res = await fetch(
-          `https://api.github.com/repos/${u}/${repo.name}/commits?author=${u}&per_page=100&since=${sinceISO}`
-        );
-        
-        if (!res.ok) {
-          console.warn(`Failed to fetch commits for ${repo.name}: ${res.status}`);
-          return;
-        }
-        
-        const commits = await res.json();
-        if (!Array.isArray(commits)) return;
-
-        commits.forEach(c => {
-          const date = c.commit?.author?.date?.slice(0, 10);
-          if (date) {
-            commitsByDay[date] = (commitsByDay[date] || 0) + 1;
-            totalCommits++;
-          }
-        });
-        
-        console.log(`Found ${commits.length} commits in ${repo.name}`);
-      } catch (error) {
-        console.error(`Error fetching ${repo.name}:`, error);
-      }
-    }));
-
-    const commitsEl = document.getElementById('st-commits');
-    commitsEl.textContent = totalCommits > 0 ? `${totalCommits}+` : '—';
-    
-    console.log(`Total commits found: ${totalCommits}`);
-
-    // ── Build contribution grid ──────────────────────
-    const g = document.getElementById('cg');
-    
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const startDate = new Date(today);
-    startDate.setDate(startDate.getDate() - (52 * 7) - startDate.getDay());
-
-    const maxCommits = Math.max(1, ...Object.values(commitsByDay));
-    console.log(`Max commits in a day: ${maxCommits}`);
-
-    let html = '';
-    for (let i = 0; i < 53 * 7; i++) {
-      const d = new Date(startDate);
-      d.setDate(startDate.getDate() + i);
-
-      if (d > today) {
-        html += `<div class="cc" aria-hidden="true"></div>`;
-        continue;
-      }
-
-      const key = d.toISOString().slice(0, 10);
-      const count = commitsByDay[key] || 0;
-
-      let level = 0;
-      if (count > 0) {
-        const ratio = count / maxCommits;
-        if      (ratio <= 0.25) level = 1;
-        else if (ratio <= 0.5)  level = 2;
-        else if (ratio <= 0.75) level = 3;
-        else                    level = 4;
-      }
-
-      html += `<div class="cc${level > 0 ? ' l' + level : ''}" title="${key}: ${count} commit${count !== 1 ? 's' : ''}" aria-hidden="true"></div>`;
-    }
-    g.innerHTML = html;
-    
-    console.log('Contribution grid rendered successfully');
-
-  } catch (error) {
-    console.error('Fatal error:', error);
   }
+
+  // ── Populate stat cards ──────────────────────────────
+  const reposEl   = document.getElementById('st-repos');
+  const starsEl   = document.getElementById('st-stars');
+  const commitsEl = document.getElementById('st-commits');
+
+  if (reposEl)   reposEl.textContent   = publicRepos ?? '—';
+  if (starsEl)   starsEl.textContent   = stars ?? '—';
+  if (commitsEl) commitsEl.textContent = totalCommits > 0 ? `${totalCommits}+` : '—';
+
+  // ── Build contribution grid ─────────────────────────
+  const g = document.getElementById('cg');
+  if (!g) return;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const startDate = new Date(today);
+  startDate.setDate(startDate.getDate() - (52 * 7) - startDate.getDay());
+
+  const maxCommits = Math.max(1, ...Object.values(commitsByDay || {}));
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < 53 * 7; i++) {
+    const d = new Date(startDate);
+    d.setDate(startDate.getDate() + i);
+
+    const cell = document.createElement('div');
+    cell.classList.add('cc');
+
+    if (d > today) {
+      cell.setAttribute('aria-hidden', 'true');
+      fragment.appendChild(cell);
+      continue;
+    }
+
+    const key   = d.toISOString().slice(0, 10);
+    const count = (commitsByDay && commitsByDay[key]) || 0;
+
+    let level = 0;
+    if (count > 0) {
+      const ratio = count / maxCommits;
+      if      (ratio <= 0.25) level = 1;
+      else if (ratio <= 0.5)  level = 2;
+      else if (ratio <= 0.75) level = 3;
+      else                    level = 4;
+    }
+
+    if (level > 0) cell.classList.add('l' + level);
+    cell.title = `${key}: ${count} commit${count !== 1 ? 's' : ''}`;
+    cell.setAttribute('aria-hidden', 'true');
+    fragment.appendChild(cell);
+  }
+
+  g.appendChild(fragment);
 })();
 
+
 // ─── Contact form ─────────────────────────────────────
-const form = document.getElementById('cform');
-const succ = document.getElementById('fsuccess');
+const form       = document.getElementById('cform');
+const succ       = document.getElementById('fsuccess');
 const formStatus = document.getElementById('fform-status');
-function val(id, errId, fn){
-  const el = document.getElementById(id), er = document.getElementById(errId);
+
+function val(id, errId, fn) {
+  const el = document.getElementById(id);
+  const er = document.getElementById(errId);
   if (!el || !er) return true;
   const ok = fn(el.value.trim());
-  el.classList.toggle('err', !ok); 
+  el.classList.toggle('err', !ok);
   er.classList.toggle('show', !ok);
   el.setAttribute('aria-invalid', String(!ok));
   return ok;
 }
+
 if (form) {
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    const ok1 = val('fn','en', v => v.length >= 2);
-    const ok2 = val('fe2','ee', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
-    const ok3 = val('fm','em', v => v.length >= 10);
-    if(!ok1 || !ok2 || !ok3) return;
-    const realSubmitBtn = document.getElementById('fsubmit');
-    const btnMarkup = realSubmitBtn ? realSubmitBtn.innerHTML : '';
+    const ok1 = val('fn', 'en', v => v.length >= 2);
+    const ok2 = val('fe2', 'ee', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+    const ok3 = val('fm', 'em', v => v.length >= 10);
+    if (!ok1 || !ok2 || !ok3) return;
+
+    const submitBtn = document.getElementById('fsubmit');
+    const btnMarkup = submitBtn ? submitBtn.innerHTML : '';
+
     if (formStatus) {
       formStatus.textContent = '';
       formStatus.classList.remove('show', 'is-error');
     }
-    if (realSubmitBtn) {
-      realSubmitBtn.disabled = true;
-      realSubmitBtn.textContent = 'Sending...';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
     }
+
     try {
       const response = await fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
-        headers: {
-          Accept: 'application/json'
-        }
+        headers: { Accept: 'application/json' }
       });
 
       if (!response.ok) {
-        let message = 'Something went wrong while sending your message. Please try again.';
+        let message = 'Something went wrong. Please try again.';
         try {
           const result = await response.json();
           if (Array.isArray(result.errors) && result.errors.length > 0) {
-            message = result.errors.map(error => error.message).join(' ');
+            message = result.errors.map(err => err.message).join(' ');
           }
-        } catch (error) {
-          console.error('Unable to read Formspree error response:', error);
-        }
+        } catch (_) { /* use default message */ }
         throw new Error(message);
       }
 
@@ -475,48 +312,33 @@ if (form) {
       form.style.display = 'none';
       if (succ) succ.classList.add('show');
     } catch (error) {
-      console.error('Form submission failed:', error);
       if (formStatus) {
-        formStatus.textContent = error.message || 'Unable to send your message right now. Please email me directly instead.';
+        formStatus.textContent = error.message || 'Unable to send your message. Please email me directly.';
         formStatus.classList.add('show', 'is-error');
       }
     } finally {
-      if (realSubmitBtn) {
-        realSubmitBtn.disabled = false;
-        realSubmitBtn.innerHTML = btnMarkup;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = btnMarkup;
       }
     }
-    return;
-    const btn = document.getElementById('fsubmit');
-    if (btn) {
-      btn.disabled = true; 
-      btn.textContent = 'Sending…';
-    }
-    // TODO: Replace with real submission, e.g.:
-    // await fetch('https://formspree.io/f/YOUR_ID', {method:'POST', body: new FormData(form)});
-    await new Promise(r => setTimeout(r, 900));
-    form.style.display = 'none';
-    if (succ) succ.classList.add('show');
   });
 }
-['fn','fe2','fm'].forEach(id => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.addEventListener('input', function(){ this.classList.remove('err'); });
+
+// Clear validation errors on input
+['fn', 'fe2', 'fm'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('input', function () {
+      this.classList.remove('err');
+      this.setAttribute('aria-invalid', 'false');
+    });
   }
 });
-['fn','fe2','fm'].forEach(id => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.addEventListener('input', function(){ this.setAttribute('aria-invalid', 'false'); });
-  }
-});
+
 
 // ─── Footer ───────────────────────────────────────────
 const yearEl = document.getElementById('yr');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 const updateEl = document.getElementById('upd');
-if (updateEl) updateEl.textContent = 'Last updated: ' + new Date().toLocaleDateString('en-ZA',{year:'numeric',month:'long'});
-
-// ─── Initialize additional interactive features ───────
-console.log('All interactive features initialized successfully');
+if (updateEl) updateEl.textContent = 'Last updated: ' + new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long' });

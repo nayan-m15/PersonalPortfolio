@@ -4,12 +4,21 @@
   <!-- ═══ META & SEO ═══ -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Nayan Makanjee — 3rd-year Computer Science student at Wits. Full-stack and ML experience across shipped and in-development projects. Open to internships and entry-level software roles." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nayan Makanjee - Computer Science Student" />
+  <meta property="og:description" content="3rd-year CS student at Wits with full-stack and ML experience. View my projects and get in touch." />
+  <meta property="og:image" content="logo1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nayan Makanjee - Computer Science Student" />
+  <meta name="twitter:description" content="3rd-year CS student at Wits with full-stack and ML experience." />
 
   <link rel="stylesheet" href="styles.css">
 
-  <title>Nayan Makanjee - Computer Science Student</title>  
-  <meta name="keywords" content="Nayan Makanjee, software developer, computer science, Wits, portfolio, React, Python, machine learning" />
+  <title>Nayan Makanjee - Computer Science Student</title>
+  <meta name="keywords" content="Nayan Makanjee, software developer, computer science, Wits, portfolio, React, Python, machine learning, TypeScript, Next.js, Supabase" />
   <meta name="author" content="Nayan Makanjee" />
   <meta name="robots" content="index, follow" />
   
@@ -48,7 +57,7 @@
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <a href="./Nayan_Makanjee_CV.pdf" download class="btn btn-secondary" id="nav-resume" style="display:none">
+        <a href="./Nayan_Makanjee_CV.pdf" download class="btn btn-secondary" id="nav-resume">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Resume
         </a>
@@ -78,13 +87,13 @@
   <!-- ═══ HERO ═══ -->
   <section id="hero" aria-labelledby="hero-name">
     <div class="container">
-      <div class="hero-avail" aria-label="Open to internship opportunities">
+      <div class="hero-avail" aria-label="Open to opportunities">
         <span class="avail-dot" aria-hidden="true"></span>
-        Available for internships, learnerships and vac work
+        Open to internships, learnerships and entry-level software roles
       </div>
       <h1 class="hero-name" id="hero-name">Nayan Makanjee</h1>
-      <p class="hero-title">Computer Science Student &nbsp;</p>
-      <p class="hero-bio">I'm a 3rd-year Computer Science student at the University of Witwatersrand who is passionate about building software that solves real world problems. My interests include web development, mobile applications and artificial intelligence. I value clean architecture, thoughtful interfaces, and code that other engineers enjoy working with.</p>
+      <p class="hero-title">Computer Science Student</p>
+      <p class="hero-bio">I'm a 3rd-year Computer Science student at the University of Witwatersrand with hands-on full-stack and machine learning experience across shipped and in-development projects. I'm drawn to building software that solves real problems — from student marketplaces to coaching platforms with offline-sync support. Known for diligence, adaptability, and a drive to continuously grow.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary" data-action="scroll" data-target="projects"> 
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -114,19 +123,16 @@
                     <div class="card-content">
                         <div>
                             <h3 class="card-title">Academic Excellence</h3>
-                            <p class="card-desc">Honours distinction in Grade 12 with 4 years of academic colors and leadership as Prefect.</p>
+                            <p class="card-desc">Honours Distinction in Matric with Full Academic Colours (Grades 8-11) and leadership as Prefect.</p>
                         </div>
-                        <!--
-                        <a href="#education" class="feature-link">See Achievements <i class="fas fa-arrow-right"></i></a>
-                        -->
                         
                     </div>
                 </div>
                 <div class="floating-card card-2">
                     <div class="card-content">
                         <div>
-                            <h3 class="card-title">Technical Passion</h3>
-                            <p class="card-desc">Certified technical specialist expanding knowledge in cutting-edge technologies.</p>
+                            <h3 class="card-title">Full-Stack &amp; ML</h3>
+                            <p class="card-desc">Hands-on experience across 5 projects — from live marketplaces to ML pipelines achieving 0.797 Macro-F1.</p>
                         </div>
                     </div>
                 </div>                    
@@ -135,72 +141,20 @@
 
       <div class="hero-stats">
         <div><div class="stat-num">3rd</div><div class="stat-lbl">Year CS Student</div></div>
-        <div><div class="stat-num">2</div><div class="stat-lbl">Projects Shipped</div></div>
-        <div><div class="stat-num">6+</div><div class="stat-lbl">Technologies</div></div>
+        <div><div class="stat-num">5</div><div class="stat-lbl">Projects Built</div></div>
+        <div><div class="stat-num">10+</div><div class="stat-lbl">Technologies</div></div>
       </div>
     </div>
   </section>
 
   
-  <!-- ═══ FEATURED PROJECT ═══ --><!--
-  <section id="featured" aria-label="Featured project">
-    <div class="container">
-      <p class="feat-eyebrow">Featured Project</p>
-      <article class="feat-card reveal">
-        <div>
-          <div class="feat-meta">
-            <span class="badge badge-accent">Full-Stack</span>
-            <span class="badge badge-success">Live</span>
-          </div>
-          <h2 class="feat-name">AI Study Assistant</h2>
-          <p class="feat-desc">Students at Wits struggle to convert dense lecture notes into effective study material. I built a full-stack web app that accepts PDF uploads, processes them through the OpenAI API, and returns personalised multiple-choice quizzes — reducing estimated exam prep time by 40%.</p>
-          <div class="feat-stack">
-            <span class="badge">Python</span><span class="badge">Flask</span><span class="badge">React</span><span class="badge">PostgreSQL</span><span class="badge">OpenAI API</span><span class="badge">JWT Auth</span><span class="badge">Vercel</span>
-          </div>
-          <div class="feat-links">
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live Demo
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              Source Code
-            </a>
-          </div>
-        </div>
-        <div class="code-win" aria-hidden="true">
-          <div class="code-bar">
-            <span class="cd cd-r"></span><span class="cd cd-y"></span><span class="cd cd-g"></span>
-            <span class="code-fn">quiz_generator.py</span>
-          </div>
-          <div class="code-body">
-            <div class="cl"><span class="ln">1</span><span><span class="kw">from</span> <span class="vr">openai</span> <span class="kw">import</span> <span class="vr">OpenAI</span></span></div>
-            <div class="cl"><span class="ln">2</span><span><span class="kw">from</span> <span class="vr">app.models</span> <span class="kw">import</span> <span class="vr">Quiz</span></span></div>
-            <div class="cl"><span class="ln">3</span><span></span></div>
-            <div class="cl"><span class="ln">4</span><span class="cm"># Generate questions from lecture text</span></div>
-            <div class="cl"><span class="ln">5</span><span><span class="kw">def</span> <span class="fn">generate_quiz</span>(<span class="vr">text</span>: <span class="vr">str</span>, <span class="vr">n</span>: <span class="vr">int</span> = <span class="nm">10</span>):</span></div>
-            <div class="cl"><span class="ln">6</span><span>&nbsp;&nbsp;<span class="vr">client</span> = <span class="fn">OpenAI</span>()</span></div>
-            <div class="cl"><span class="ln">7</span><span>&nbsp;&nbsp;<span class="vr">resp</span> = <span class="vr">client</span>.<span class="vr">chat</span>.<span class="vr">completions</span>.<span class="fn">create</span>(</span></div>
-            <div class="cl"><span class="ln">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">model</span>=<span class="str">"gpt-4o-mini"</span>,</span></div>
-            <div class="cl"><span class="ln">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="vr">messages</span>=[{</span></div>
-            <div class="cl"><span class="ln">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"role"</span>: <span class="str">"user"</span>,</span></div>
-            <div class="cl"><span class="ln">11</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"content"</span>: <span class="fn">f</span><span class="str">"Generate {n} MCQs\n{text}"</span></span></div>
-            <div class="cl"><span class="ln">12</span><span>&nbsp;&nbsp;&nbsp;&nbsp;}]</span></div>
-            <div class="cl"><span class="ln">13</span><span>&nbsp;&nbsp;)</span></div>
-            <div class="cl"><span class="ln">14</span><span>&nbsp;&nbsp;<span class="kw">return</span> <span class="vr">Quiz</span>.<span class="fn">from_response</span>(<span class="vr">resp</span>)</span></div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section> -->
-
   <!-- ═══ PROJECTS ═══ -->
   <section id="projects" aria-labelledby="projects-h">
     <div class="container">
       <div>
         <p class="section-eyebrow">Work</p>
         <h2 class="section-title" id="projects-h">Projects</h2>
-        <p class="section-subtitle">Projects built to solve real problems, explore new technologies, and practice system design end-to-end.</p>
+        <p class="section-subtitle">Projects built to solve real problems — from campus marketplaces and coaching platforms to ML pipelines and business websites.</p>
         
       </div>
       
@@ -214,37 +168,62 @@
               <a href="https://github.com/nayan-m15/Campus-Marketplace" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
             </div>
           </div>
-          <div><p class="proj-challenge">Campus Marketplace</p><h3 class="proj-name">CampusXChange</h3></div>
-          <p class="proj-desc">This project is a campus-focused marketplace application built for university communities.</p>
-          <p class="proj-desc">Its purpose is to help students exchange second-hand items more safely and more conveniently within a university context, while also giving staff and admins tools to manage facilities, bookings, and marketplace operations.</p>
-          <p class="proj-desc">The main problem it solves is the lack of a campus-specific marketplace that combines identity trust, internal messaging, transaction coordination, and operational oversight in one system.</p>
-          <div class="proj-stack"><span class="badge">React</span><span class="badge">TypeScript</span><span class="badge">Supabase</span><span class="badge">CSS</span><span class="badge">Azure Static Web Apps</span></div>
+          <div><p class="proj-challenge">Campus Marketplace — Team of 4</p><h3 class="proj-name">CampusXChange</h3></div>
+          <p class="proj-desc">A secondhand marketplace for students to buy, sell, or trade items safely within a university context, with separate admin and staff dashboards to manage facilities, bookings, and marketplace operations.</p>
+          <p class="proj-desc">Integrated PayFast for payments, Brevo for email notifications, and SerpAPI for product search. Deployed on Azure Static Web Apps with Git-based version control.</p>
+          <div class="proj-stack"><span class="badge">React</span><span class="badge">Vite</span><span class="badge">CSS</span><span class="badge">Supabase</span><span class="badge">Azure Static Web Apps</span><span class="badge">PayFast</span><span class="badge">Brevo</span><span class="badge">SerpAPI</span></div>
         </article>
-        
-        
+
+        <article class="proj-card reveal d1">
+          <div class="proj-head">
+            <div class="proj-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="proj-acts">
+              <a href="https://gaffer-virid.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="Live demo"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              <a href="https://github.com/nayan-m15/Gaffer" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+            </div>
+          </div>
+          <div><p class="proj-challenge">Coaching Platform — Team of 6 (In Development)</p><h3 class="proj-name">Gaffer</h3></div>
+          <p class="proj-desc">A full-stack coaching platform for amateur football teams to manage rosters, schedule fixtures, and record live match events, with player statistics automatically derived from event logs.</p>
+          <p class="proj-desc">Offline integration using PowerSync with background synchronisation and duplicate-entry detection. Role-based access control for Coach, Assistant, and Athlete users with Zod-validated APIs documented via Swagger/OpenAPI.</p>
+          <div class="proj-stack"><span class="badge">React 19</span><span class="badge">TypeScript</span><span class="badge">TanStack Query</span><span class="badge">shadcn/ui</span><span class="badge">NestJS</span><span class="badge">Drizzle ORM</span><span class="badge">Neon PostgreSQL</span><span class="badge">PowerSync</span></div>
+        </article>
+
+        <article class="proj-card reveal d2">
+          <div class="proj-head">
+            <div class="proj-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div class="proj-acts">
+            </div>
+          </div>
+          <div><p class="proj-challenge">ML Group Project — Team of 4</p><h3 class="proj-name">Human Activity Recognition</h3></div>
+          <p class="proj-desc">Developed an end-to-end machine learning pipeline to identify six human activities from multivariate time-series data collected through a wearable sensor system.</p>
+          <p class="proj-desc">Extracted over 1,470 features per sample including statistical, frequency-domain FFT, autocorrelation, and cross-sensor correlation features. Achieved a Macro-F1 of 0.797 ± 0.021 using a tuned LightGBM model with stratified 5-fold cross-validation.</p>
+          <div class="proj-stack"><span class="badge">Python</span><span class="badge">NumPy</span><span class="badge">Pandas</span><span class="badge">Scikit-learn</span><span class="badge">LightGBM</span><span class="badge">Kaggle</span></div>
+        </article>
+
+        <article class="proj-card reveal">
+          <div class="proj-head">
+            <div class="proj-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div class="proj-acts">
+              <a href="https://www.craftedinteriors.co.za/" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="Live site"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+          <div><p class="proj-challenge">Carpentry Business Website</p><h3 class="proj-name">Crafted Interiors</h3></div>
+          <p class="proj-desc">Contributed to the development and refinement of a professional website for a bespoke carpentry and interiors company, working within an existing React codebase.</p>
+          <p class="proj-desc">Redesigned the About page and reworked the hero section video to improve the overall user experience.</p>
+          <div class="proj-stack"><span class="badge">React</span><span class="badge">TypeScript</span><span class="badge">Vite</span><span class="badge">Tailwind CSS</span></div>
+        </article>
+
         <article class="proj-card reveal d1">
           <div class="proj-head">
             <div class="proj-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
             <div class="proj-acts">
-              
-              <a href="https://github.com/Hemesh-P/Project_GrubFlow/tree/main" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+              <a href="https://github.com/nayan-m15/Project_GrubFlow" target="_blank" rel="noopener noreferrer" class="proj-act-btn" aria-label="GitHub"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
             </div>
           </div>
-          <div><p class="proj-challenge">Restaurant Order Tracker (Mobile)</p><h3 class="proj-name">GrubFlow</h3></div>
-          <p class="proj-desc">GrubFlow is a mobile app that enables real-time order tracking and improves communication between takeaway restaurants and customers.</p>
-          <p class="proj-desc">The app provides separate customer and staff features, including order management, tracking, ratings, and customer search.</p>
-          <p class="proj-desc">Built with PHP, MySQL, and JSON APIs, the app uses a secure, well-structured database with automated features to ensure reliable data management and a smooth user experience.</p>
-          <p class="proj-desc">Please note that the server for the backend is currently offline.</p>
-          <div class="proj-stack"><span class="badge">Java</span><span class="badge">Android Studio</span><span class="badge">PHP</span><span class="badge">MySql</span><span class="badge">JSON</span></div>
-        </article>
-        
-        <article class="proj-card reveal d2" style="border-style:dashed">
-          <div class="proj-head">
-            <div class="proj-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-          </div>
-          <div><p class="proj-challenge">In Progress</p><h3 class="proj-name">Next Project</h3></div>
-          <p class="proj-desc" style="font-style:italic">Currently working on a new project. Follow my GitHub for updates on what's shipping next.</p>
-          <div class="proj-stack"><span class="badge">TBD</span></div>
+          <div><p class="proj-challenge">Restaurant Order Tracker — Team of 4</p><h3 class="proj-name">GrubFlow</h3></div>
+          <p class="proj-desc">A restaurant order tracking Android application which lets staff track orders in real time. Features include user login, live order status updates, and an admin dashboard.</p>
+          <p class="proj-desc">Built with Android Studio with a PHP backend. This was a purely academic application and was never used by actual restaurant staff.</p>
+          <div class="proj-stack"><span class="badge">Java</span><span class="badge">Android Studio</span><span class="badge">PHP</span><span class="badge">MySQL</span></div>
         </article>
 
       </div> 
@@ -263,27 +242,31 @@
       <div class="skills-grid">
         <div class="sk-group reveal">
           <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Languages</div>
-          <div class="sk-badges"><span class="badge">Python</span><span class="badge">Java</span><span class="badge">JavaScript</span><span class="badge">SQL</span><span class="badge">HTML5</span><span class="badge">CSS3</span></div>
+          <div class="sk-badges"><span class="badge">Python</span><span class="badge">Java</span><span class="badge">C++</span><span class="badge">C#</span><span class="badge">JavaScript</span><span class="badge">TypeScript</span><span class="badge">SQL</span></div>
         </div>
         <div class="sk-group reveal d1">
-          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Mobile Development</div>
-          <div class="sk-badges"><span class="badge">Android Studio</span></div>
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>Frontend / Web</div>
+          <div class="sk-badges"><span class="badge">HTML5</span><span class="badge">CSS3</span><span class="badge">React</span></div>
         </div>
         <div class="sk-group reveal d2">
-          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>Web Development</div>
-          <div class="sk-badges"><span class="badge">Node.js</span></div>
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>Backend &amp; Data</div>
+          <div class="sk-badges"><span class="badge">Node.js</span><span class="badge">Next.js</span><span class="badge">Supabase</span><span class="badge">PostgreSQL</span><span class="badge">Drizzle ORM</span><span class="badge">REST APIs</span></div>
         </div>
         <div class="sk-group reveal">
-          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>Tools</div>
-          <div class="sk-badges"><span class="badge">Git</span><span class="badge">GitHub</span><span class="badge">NetBeans</span><span class="badge">AutoCAD</span><span class="badge">VS Code</span><span class="badge">Microsoft Office</span></div>
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>Data Science &amp; ML</div>
+          <div class="sk-badges"><span class="badge">NumPy</span><span class="badge">Pandas</span><span class="badge">Scikit-learn</span><span class="badge">LightGBM</span><span class="badge">Matplotlib</span></div>
         </div>
         <div class="sk-group reveal d1">
-          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>AI / Machine Learning</div>
-          <div class="sk-badges"><span class="badge">NumPy</span><span class="badge">Matplotlib</span></div>
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Tools / Development</div>
+          <div class="sk-badges"><span class="badge">Git</span><span class="badge">GitHub</span><span class="badge">VS Code</span><span class="badge">Android Studio</span><span class="badge">AutoCAD</span><span class="badge">NetBeans</span></div>
         </div>
         <div class="sk-group reveal d2">
-          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Currently Studying</div>
-          <div class="sk-badges"><span class="badge badge-accent">Data Structures &amp; Algorithms</span><span class="badge badge-accent">Machine Learning</span><span class="badge badge-accent">Parallel Computing</span><span class="badge badge-accent">Software Design</span><span class="badge badge-accent">Mobile Computing</span></div>
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Concepts</div>
+          <div class="sk-badges"><span class="badge">OOP</span><span class="badge">Data Structures</span><span class="badge">Algorithms</span><span class="badge">Zod</span><span class="badge">Agile/Scrum</span><span class="badge">CI/CD Pipelines</span></div>
+        </div>
+        <div class="sk-group reveal">
+          <div class="sk-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Office / OS</div>
+          <div class="sk-badges"><span class="badge">Microsoft Office Suite</span><span class="badge">Windows</span><span class="badge">Linux (basic)</span></div>
         </div>
       </div>
     </div>
@@ -309,62 +292,10 @@
         <p class="cert-desc"></p>
         <div class="cert-footer">
           <span class="cert-date">As of March 2026</span>
-          
-        </div>
-      </article>
-    </div>  
-    <!--
-    <div class="cert-grid">
-
-      <article class="cert-card reveal">
-        <div class="cert-card-top">
-          <div class="cert-issuer-logo" aria-hidden="true">G</div>
-          <span class="badge badge-success">Verified</span>
-        </div>
-        <h3 class="cert-name">Google Data Analytics Certificate</h3>
-        <p class="cert-issuer">Google · Coursera</p>
-        <p class="cert-desc">Covers the full data analysis lifecycle — data cleaning, SQL, R, Tableau, and a real-world capstone project.</p>
-        <div class="cert-footer">
-          <span class="cert-date">Issued Jan 2024</span>
-          <a href="#" target="_blank" rel="noopener noreferrer" class="cert-link">
-            View credential
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
         </div>
       </article>
 
-      <article class="cert-card reveal d1">
-        <div class="cert-card-top">
-          <div class="cert-issuer-logo" aria-hidden="true">U</div>
-          <span class="badge badge-success">Verified</span>
-        </div>
-        <h3 class="cert-name">The Complete Web Developer Bootcamp</h3>
-        <p class="cert-issuer">Udemy · Dr Angela Yu</p>
-        <p class="cert-desc">Full-stack web development covering HTML, CSS, JavaScript, Node.js, React, MongoDB, and REST API design.</p>
-        <div class="cert-footer">
-          <span class="cert-date">Issued Aug 2023</span>
-          <a href="#" target="_blank" rel="noopener noreferrer" class="cert-link">
-            View credential
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <article class="cert-card reveal d2">
-        <div class="cert-card-top">
-          <div class="cert-issuer-logo" aria-hidden="true">A</div>
-          <span class="badge" style="color:var(--warning, #FBBF24); background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.2);">In Progress</span>
-        </div>
-        <h3 class="cert-name">AWS Cloud Practitioner</h3>
-        <p class="cert-issuer">Amazon Web Services</p>
-        <p class="cert-desc">Foundational certification covering AWS cloud concepts, services, security, architecture, and pricing.</p>
-        <div class="cert-footer">
-          <span class="cert-date">Expected mid-2025</span>
-          <span class="cert-link" style="opacity:0.4;cursor:default;">View credential</span>
-        </div>
-      </article>
-
-    </div> -->
+    </div>
   </div>
 </section>
 
@@ -374,10 +305,10 @@
       <div>
         <p class="section-eyebrow">Background</p>
         <h2 class="section-title" id="exp-h">Experience &amp; Education</h2>
-        <p class="section-subtitle">Academic background and extracurricular involvement.</p>
+        <p class="section-subtitle">Academic background, work experience, volunteering, and extracurricular involvement.</p>
       </div>
       <div class="exp-list" role="list">
- 
+
         <div class="exp-item reveal" role="listitem">
           <div class="exp-dot" aria-hidden="true"><div class="exp-dot-inner"></div></div>
           <div class="exp-content">
@@ -386,31 +317,60 @@
               <span class="exp-org">University of the Witwatersrand</span>
               <span class="exp-date">2024 - Present</span>
             </div>
-            <p class="exp-desc">Full-time undergraduate degree focused on building software that solves real-world problems, with particular interest in web development, mobile applications, and artificial intelligence.</p>
+            <p class="exp-desc">Full-time undergraduate degree with hands-on full-stack and machine learning experience across coursework and personal projects.</p>
             <div class="exp-pts">
-              <p class="exp-pt">Relevant coursework: Data Structures &amp; Algorithms, Machine Learning, Parallel Computing, Software Design, Mobile Computing</p>
-              
+              <p class="exp-pt">Coursework: Software Design, Operating Systems &amp; Systems Programming, Computer Graphics &amp; Visualization, Data Structures &amp; Algorithms, OOP, Databases, Networks, Machine Learning, Parallel Computing</p>
             </div>
           </div>
         </div>
- 
+
         <div class="exp-item reveal d1" role="listitem">
           <div class="exp-dot" aria-hidden="true"><div class="exp-dot-inner"></div></div>
           <div class="exp-content">
             <div class="exp-meta">
-              <span class="exp-role">Grade 7 – 12</span>
+              <span class="exp-role">Head of Technical Support</span>
               <span class="exp-org">Curro Midrand Sagewood Campus</span>
-              <span class="exp-date">2018 - 2023</span>
+              <span class="exp-date">2022 - 2023</span>
             </div>
-            <p class="exp-desc">Consistently involved in academic, technical, and extracurricular activities throughout secondary school.</p>
+            <p class="exp-desc">Managed all lighting, sound, and IT equipment setup for school events, assemblies, and functions.</p>
             <div class="exp-pts">
-              <p class="exp-pt">Leadership: Prefect in both Grade 7 and Matric; Public Speaking (English)</p>
-              <p class="exp-pt">Technical: IIE-Vega Generation V Workshop, SAICE JHB Bridge Building Competition, Technical Support</p>
-              <p class="exp-pt">Other: Cricket; foundational exposure to Java, HTML, NetBeans, AutoCAD</p>
+              <p class="exp-pt">Diagnosed and resolved hardware/software faults under time pressure</p>
+              <p class="exp-pt">Trained and supervised junior students in independently operating presentation and sound systems</p>
             </div>
           </div>
         </div>
- 
+
+        <div class="exp-item reveal d2" role="listitem">
+          <div class="exp-dot" aria-hidden="true"><div class="exp-dot-inner"></div></div>
+          <div class="exp-content">
+            <div class="exp-meta">
+              <span class="exp-role">Volunteer</span>
+              <span class="exp-org">Food for Life &amp; Sandton SPCA</span>
+              <span class="exp-date">2021 - 2023</span>
+            </div>
+            <p class="exp-desc">Contributed regular volunteer hours to community food distribution and animal welfare.</p>
+          </div>
+        </div>
+
+        <div class="exp-item reveal" role="listitem">
+          <div class="exp-dot" aria-hidden="true"><div class="exp-dot-inner"></div></div>
+          <div class="exp-content">
+            <div class="exp-meta">
+              <span class="exp-role">National Senior Certificate (Matric)</span>
+              <span class="exp-org">Curro Midrand Sagewood Campus</span>
+              <span class="exp-date">2023</span>
+            </div>
+            <p class="exp-desc">Honours Distinction with consistent academic excellence throughout secondary school.</p>
+            <div class="exp-pts">
+              <p class="exp-pt">Full Colours for Academics: Grades 8 - 11; Certificate in Technical Support</p>
+              <p class="exp-pt">Prefect: Grade 7 (2018) &amp; Grade 12 (2023)</p>
+              <p class="exp-pt">Captained school cricket side and competed at regional trials (2014, 2015, 2018)</p>
+              <p class="exp-pt">English Public Speaking (2019-2022); Vega Vibe Design Challenge (2022); SAICE JHB Bridge Building Competition</p>
+              <p class="exp-pt">FSKA Karate World Championship participant (2015)</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -456,8 +416,13 @@
         <div>
           <p class="section-eyebrow">Contact</p>
           <h2 class="contact-title" id="contact-h">Let's work together.</h2>
-          <p class="contact-sub">Actively seeking software engineering internships for 2026 & 2027. Whether you have an opportunity, a project to collaborate on, or just want to connect. I'd love to hear from you.</p>
+          <p class="contact-sub">Actively seeking software engineering internships and entry-level roles for 2026 &amp; 2027. Whether you have an opportunity, a project to collaborate on, or just want to connect — I'd love to hear from you.</p>
           <div class="contact-links">
+            <a href="tel:+27713637479" class="clink reveal" aria-label="Phone">
+              <div class="clink-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div class="clink-txt"><div class="clink-lbl">Phone</div><div class="clink-val">071 363 7479</div></div>
+              <span class="clink-arr" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+            </a>
             <a href="mailto:nmakanjee15@gmail.com" class="clink reveal" aria-label="Email">
               <div class="clink-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
               <div class="clink-txt"><div class="clink-lbl">Email</div><div class="clink-val">nmakanjee15@gmail.com</div></div>
@@ -526,13 +491,13 @@
     <div class="foot-inner">
       <div class="foot-l">
         <div id="avatar-overlay" aria-modal="true" role="dialog" aria-label="Profile photo">
-        <img src="./profile.jpg" alt="Nayan Makanjee" id="avatar-expanded" />
+        <img src="./profile.jpg" alt="Nayan Makanjee" id="avatar-expanded" loading="lazy" />
         </div>
         <span class="foot-logo">NM<span>.</span></span>
         <span class="foot-copy">© <span id="yr"></span> Nayan Makanjee. All rights reserved.</span>
       </div>
       <div class="social-links">
-                    <a href="https://github.com/nayan-m15" class="social-link"><i class="fab fa-github"></i>
+                    <a href="https://github.com/nayan-m15" class="social-link"><i class="fab fa-github"></i></a>
                     <a href="https://linkedin.com/in/nayan-m15" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://www.instagram.com/nayan.m15/" class="social-link"><i class="fab fa-instagram"></i></a>
                 </div>
